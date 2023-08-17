@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Протокол сервиса для работы с сервером
 protocol IRemoteDataService: AnyObject {
 	func loadCharacters(completion: @escaping (Result<ServerResponse, Error>) -> Void)
 	func loadImage(from stringUrl: String, completion: @escaping (Result<ImageModel, Error>) -> Void)
