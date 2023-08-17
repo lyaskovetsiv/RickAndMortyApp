@@ -28,6 +28,8 @@
 		A00C3B802A8E84180003EAA5 /* IReusableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00C3B7F2A8E84180003EAA5 /* IReusableCell.swift */; };
 		A00C3B852A8E87940003EAA5 /* Gilroy-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = A00C3B842A8E87940003EAA5 /* Gilroy-Light.otf */; };
 		A00C3B872A8E88750003EAA5 /* Gilroy-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = A00C3B862A8E88750003EAA5 /* Gilroy-ExtraBold.otf */; };
+		A00C3B8A2A8E8D690003EAA5 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00C3B892A8E8D690003EAA5 /* NetworkService.swift */; };
+		A00C3B8C2A8E8DEE0003EAA5 /* INetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00C3B8B2A8E8DEE0003EAA5 /* INetworkService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +56,8 @@
 		A00C3B7F2A8E84180003EAA5 /* IReusableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IReusableCell.swift; sourceTree = "<group>"; };
 		A00C3B842A8E87940003EAA5 /* Gilroy-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-Light.otf"; sourceTree = "<group>"; };
 		A00C3B862A8E88750003EAA5 /* Gilroy-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-ExtraBold.otf"; sourceTree = "<group>"; };
+		A00C3B892A8E8D690003EAA5 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		A00C3B8B2A8E8DEE0003EAA5 /* INetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INetworkService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,7 +94,8 @@
 				A00C3B562A8E56A90003EAA5 /* Application */,
 				A00C3B6A2A8E6A8C0003EAA5 /* Assembly */,
 				A00C3B832A8E84700003EAA5 /* Helpers */,
-				A00C3B6E2A8E6B330003EAA5 /* NetworkLayer */,
+				A00C3B8E2A8E8DFB0003EAA5 /* CoreLayer */,
+				A00C3B6E2A8E6B330003EAA5 /* ServiceLayer */,
 				A00C3B672A8E69C90003EAA5 /* PresentationLayer */,
 			);
 			path = RickAndMortyApp;
@@ -181,19 +186,18 @@
 		A00C3B6D2A8E6B2B0003EAA5 /* RemoteDataService */ = {
 			isa = PBXGroup;
 			children = (
-				A00C3B7A2A8E712F0003EAA5 /* NetworkError */,
 				A00C3B6F2A8E6B450003EAA5 /* IRemoteDataService.swift */,
 				A00C3B6B2A8E6B140003EAA5 /* RemoteDataService.swift */,
 			);
 			path = RemoteDataService;
 			sourceTree = "<group>";
 		};
-		A00C3B6E2A8E6B330003EAA5 /* NetworkLayer */ = {
+		A00C3B6E2A8E6B330003EAA5 /* ServiceLayer */ = {
 			isa = PBXGroup;
 			children = (
 				A00C3B6D2A8E6B2B0003EAA5 /* RemoteDataService */,
 			);
-			path = NetworkLayer;
+			path = ServiceLayer;
 			sourceTree = "<group>";
 		};
 		A00C3B772A8E6D330003EAA5 /* Model */ = {
@@ -209,6 +213,7 @@
 			isa = PBXGroup;
 			children = (
 				A00C3B782A8E6EF30003EAA5 /* NetworkError.swift */,
+				A00C3B8B2A8E8DEE0003EAA5 /* INetworkService.swift */,
 			);
 			path = NetworkError;
 			sourceTree = "<group>";
@@ -238,6 +243,23 @@
 				A00C3B862A8E88750003EAA5 /* Gilroy-ExtraBold.otf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		A00C3B8D2A8E8DF60003EAA5 /* NetworkService */ = {
+			isa = PBXGroup;
+			children = (
+				A00C3B7A2A8E712F0003EAA5 /* NetworkError */,
+				A00C3B892A8E8D690003EAA5 /* NetworkService.swift */,
+			);
+			path = NetworkService;
+			sourceTree = "<group>";
+		};
+		A00C3B8E2A8E8DFB0003EAA5 /* CoreLayer */ = {
+			isa = PBXGroup;
+			children = (
+				A00C3B8D2A8E8DF60003EAA5 /* NetworkService */,
+			);
+			path = CoreLayer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -316,6 +338,7 @@
 				A00C3B5D2A8E62AF0003EAA5 /* CharacterCell.swift in Sources */,
 				A00C3B612A8E69200003EAA5 /* MainPresenter.swift in Sources */,
 				A00C3B472A8E564A0003EAA5 /* MainVC.swift in Sources */,
+				A00C3B8A2A8E8D690003EAA5 /* NetworkService.swift in Sources */,
 				A00C3B7E2A8E836E0003EAA5 /* IConfurableCell.swift in Sources */,
 				A00C3B742A8E6D010003EAA5 /* ServerResponse.swift in Sources */,
 				A00C3B662A8E69910003EAA5 /* IMainView.swift in Sources */,
@@ -328,6 +351,7 @@
 				A00C3B6C2A8E6B140003EAA5 /* RemoteDataService.swift in Sources */,
 				A00C3B722A8E6BA90003EAA5 /* ServiceAssembly.swift in Sources */,
 				A00C3B452A8E564A0003EAA5 /* SceneDelegate.swift in Sources */,
+				A00C3B8C2A8E8DEE0003EAA5 /* INetworkService.swift in Sources */,
 				A00C3B592A8E5FA10003EAA5 /* DetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
