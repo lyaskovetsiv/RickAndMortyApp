@@ -26,6 +26,8 @@
 		A00C3B792A8E6EF30003EAA5 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00C3B782A8E6EF30003EAA5 /* NetworkError.swift */; };
 		A00C3B7E2A8E836E0003EAA5 /* IConfurableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00C3B7D2A8E836E0003EAA5 /* IConfurableCell.swift */; };
 		A00C3B802A8E84180003EAA5 /* IReusableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00C3B7F2A8E84180003EAA5 /* IReusableCell.swift */; };
+		A00C3B852A8E87940003EAA5 /* Gilroy-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = A00C3B842A8E87940003EAA5 /* Gilroy-Light.otf */; };
+		A00C3B872A8E88750003EAA5 /* Gilroy-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = A00C3B862A8E88750003EAA5 /* Gilroy-ExtraBold.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +52,8 @@
 		A00C3B782A8E6EF30003EAA5 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		A00C3B7D2A8E836E0003EAA5 /* IConfurableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IConfurableCell.swift; sourceTree = "<group>"; };
 		A00C3B7F2A8E84180003EAA5 /* IReusableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IReusableCell.swift; sourceTree = "<group>"; };
+		A00C3B842A8E87940003EAA5 /* Gilroy-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-Light.otf"; sourceTree = "<group>"; };
+		A00C3B862A8E88750003EAA5 /* Gilroy-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-ExtraBold.otf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,9 +144,9 @@
 		A00C3B5F2A8E68B70003EAA5 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A00C3B5E2A8E68B00003EAA5 /* Cells */,
 				A00C3B652A8E69910003EAA5 /* IMainView.swift */,
 				A00C3B462A8E564A0003EAA5 /* MainVC.swift */,
-				A00C3B5E2A8E68B00003EAA5 /* Cells */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -221,9 +225,19 @@
 		A00C3B832A8E84700003EAA5 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				A00C3B882A8E88A10003EAA5 /* Fonts */,
 				A00C3B822A8E846A0003EAA5 /* Protocols */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		A00C3B882A8E88A10003EAA5 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				A00C3B842A8E87940003EAA5 /* Gilroy-Light.otf */,
+				A00C3B862A8E88750003EAA5 /* Gilroy-ExtraBold.otf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -286,6 +300,8 @@
 			files = (
 				A00C3B4F2A8E564B0003EAA5 /* LaunchScreen.storyboard in Resources */,
 				A00C3B4C2A8E564B0003EAA5 /* Assets.xcassets in Resources */,
+				A00C3B852A8E87940003EAA5 /* Gilroy-Light.otf in Resources */,
+				A00C3B872A8E88750003EAA5 /* Gilroy-ExtraBold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

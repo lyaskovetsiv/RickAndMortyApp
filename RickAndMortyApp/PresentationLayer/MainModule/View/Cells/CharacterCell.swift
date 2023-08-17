@@ -10,8 +10,6 @@ import UIKit
 /// Класс ячейки коллекции с персонажами
 final class CharacterCell: UICollectionViewCell {
 
-
-
 	// MARK: - Private properties
 
 	private var photoImageView: UIImageView = {
@@ -24,7 +22,7 @@ final class CharacterCell: UICollectionViewCell {
 	private var nameLabel: UILabel = {
 		let view = UILabel(frame: .zero)
 		view.tintColor = .white
-		view.font = .systemFont(ofSize: 15)
+		view.font = UIFont(name: "Gilroy-ExtraBold", size: 15)
 		view.textAlignment = .center
 		view.numberOfLines = 1
 		return view
@@ -84,8 +82,8 @@ extension CharacterCell {
 
 		nameLabel.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
-			nameLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
-			nameLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
+			nameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
+			nameLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
 			nameLabel.topAnchor.constraint(equalTo: photoImageView.bottomAnchor, constant: 16),
 			nameLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16)
 		])

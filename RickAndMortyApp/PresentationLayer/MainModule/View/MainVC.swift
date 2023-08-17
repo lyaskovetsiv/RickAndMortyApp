@@ -16,8 +16,10 @@ final class MainVC: UIViewController {
 
 	private var mainCollectionView: UICollectionView = {
 		let layout = UICollectionViewFlowLayout()
+		layout.minimumLineSpacing = 16
+		layout.minimumInteritemSpacing = 16
 		let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
-		view.contentInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
+		view.contentInset = UIEdgeInsets(top: 0, left: 24, bottom: 0, right: 24)
 		view.showsVerticalScrollIndicator = false
 		view.register(CharacterCell.self, forCellWithReuseIdentifier: CharacterCell.identifier)
 		return view
@@ -105,6 +107,8 @@ extension MainVC: UICollectionViewDelegate {
 
 extension MainVC: UICollectionViewDelegateFlowLayout {
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-		CGSize(width: 156, height: 202)
+		let itemsPerLine = 2
+		let itemWidth = UIScreen.main.bounds.width / CGFloat(itemsPerLine) - 32
+		return CGSize(width: itemWidth, height: 202)
 	}
 }
