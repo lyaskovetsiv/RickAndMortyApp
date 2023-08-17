@@ -9,36 +9,31 @@ import Foundation
 import UIKit
 
 final class RemoteDataService: IRemoteDataService {
+	// MARK: - Private properies
 
+	private var networkService: INetworkService
 	private var imageCache = NSCache<NSString, UIImage>()
+	private var path = "https://rickandmortyapi.com/api/character"
 
-	public func loadCharacters(completion: @escaping (Result<[Character], Error>) -> Void) {
-		guard let url = URL(string: "https://rickandmortyapi.com/api/character") else {
-			completion(.failure(NetworkError.badUrl))
-			return
-		}
+	// MARK: - Inits
 
-		var request = URLRequest(url: url)
-		request.httpMethod = "GET"
+	init(networkService: INetworkService) {
+		self.networkService = networkService
+	}
 
-		let task = URLSession.shared.dataTask(with: request) { data, _, error in
-			if let error = error {
-				completion(.failure(error))
-			}
+	// MARK: - Public methods
 
-			guard let data = data else {
-				print(error)
-				return
-			}
-
-			do {
-				let serverResponse = try JSONDecoder().decode(ServerResponse.self, from: data)
-				completion(.success(serverResponse.results))
-			} catch {
+	/// Метод сервиса, который отвечает за загрузку персонажей
+	/// - Parameter completion: Обработчик завершения
+	public func loadCharacters(completion: @escaping (Result<ServerResponse, Error>) -> Void) {
+		networkService.sendRequest(path: path, needDecoding: true) { (result: Result<ServerResponse, Error>) in
+			switch result {
+			case .success(let response):
+				completion(.success(response))
+			case .failure(let error):
 				completion(.failure(error))
 			}
 		}
-		task.resume()
 	}
 
 	public func loadImage(from stringUrl: String, completion: @escaping (Result<Data, Error>) -> Void) {
@@ -46,24 +41,17 @@ final class RemoteDataService: IRemoteDataService {
 			completion(.failure(NetworkError.badUrl))
 			return
 		}
-		print(url)
-
-		print(url)
 		var request = URLRequest(url: url)
 		request.httpMethod = "GET"
-
 		let task = URLSession.shared.dataTask(with: request) { data, _, error in
 			if let error = error {
 				completion(.failure(error))
 			}
-
 			guard let data = data else {
 				print(error)
 				return
 			}
-
 			do {
-				print(data)
 				completion(.success(data))
 			} catch {
 				completion(.failure(error))

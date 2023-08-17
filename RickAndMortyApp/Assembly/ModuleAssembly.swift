@@ -13,7 +13,6 @@ final class ModuleAssembly {
 	static private var serviceAssembly: ServiceAssembly {
 			return ServiceAssembly()
 	}
-
 	static let remoteDataService: IRemoteDataService = serviceAssembly.getRemoteDataService()
 
 	/// Метод для сборки Main модуля

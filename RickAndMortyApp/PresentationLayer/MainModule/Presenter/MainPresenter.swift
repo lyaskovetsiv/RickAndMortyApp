@@ -32,8 +32,8 @@ final class MainPresenter: IMainPresenter {
 		remoteDataService.loadCharacters { [weak self] result in
 			guard let self = self else { return }
 			switch result {
-			case .success(let characters):
-				self.characters = characters
+			case .success(let response):
+				self.characters = response.results
 				DispatchQueue.main.async {
 					self.view?.updateUI()
 				}

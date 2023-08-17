@@ -24,35 +24,35 @@ final class NetworkService: INetworkService {
 		path: String,
 		needDecoding: Bool,
 		completion: @escaping (Result<T, Error>) -> Void) {
-
-		guard let url = URL(string: path) else {
-			completion(.failure(NetworkError.badUrl))
-			return
-		}
-		let urlRequest = URLRequest(url: url, timeoutInterval: 60)
-		session.dataTask(with: urlRequest) { data, _, error in
-			if let error = error {
-				completion(.failure(error))
+			guard let url = URL(string: path) else {
+				completion(.failure(NetworkError.badUrl))
 				return
 			}
-			guard let data = data else {
-				completion(.failure(NetworkError.badData))
-				return
-			}
-			if needDecoding {
-				do {
-					let model = try JSONDecoder().decode(T.self, from: data)
-					completion(.success(model))
-				} catch {
-					completion(.failure(NetworkError.badDecoding))
+			var urlRequest = URLRequest(url: url)
+			urlRequest.httpMethod = "GET"
+			session.dataTask(with: urlRequest) { data, _, error in
+				if let error = error {
+					completion(.failure(error))
+					return
 				}
-			} else {
-				if let data = data as? T {
-					completion(.success(data))
-				} else {
+				guard let data = data else {
 					completion(.failure(NetworkError.badData))
+					return
 				}
-			}
-		}.resume()
-	}
+				if needDecoding {
+					do {
+						let model = try JSONDecoder().decode(T.self, from: data)
+						completion(.success(model))
+					} catch {
+						completion(.failure(NetworkError.badDecoding))
+					}
+				} else {
+					if let data = data as? T {
+						completion(.success(data))
+					} else {
+						completion(.failure(NetworkError.badData))
+					}
+				}
+			}.resume()
+		}
 }
