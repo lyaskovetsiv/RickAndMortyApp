@@ -9,4 +9,5 @@ import Foundation
 
 protocol IRemoteDataService: AnyObject {
 	func loadCharacters(completion: @escaping (Result<[Character], Error>) -> Void)
+	func loadImage(from stringUrl: String, completion: @escaping (Result<Data, Error>) -> Void)
 }

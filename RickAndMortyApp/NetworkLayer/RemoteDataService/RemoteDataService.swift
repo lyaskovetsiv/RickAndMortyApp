@@ -37,4 +37,36 @@ final class RemoteDataService: IRemoteDataService {
 		}
 		task.resume()
 	}
+
+	public func loadImage(from stringUrl: String, completion: @escaping (Result<Data, Error>) -> Void) {
+		print(stringUrl)
+		guard let url = URL(string: stringUrl) else {
+			completion(.failure(NetworkError.badUrl))
+			return
+		}
+		print(url)
+
+		print(url)
+		var request = URLRequest(url: url)
+		request.httpMethod = "GET"
+
+		let task = URLSession.shared.dataTask(with: request) { data, _, error in
+			if let error = error {
+				completion(.failure(error))
+			}
+
+			guard let data = data else {
+				print(error)
+				return
+			}
+
+			do {
+				print(data)
+				completion(.success(data))
+			} catch {
+				completion(.failure(error))
+			}
+		}
+		task.resume()
+	}
 }

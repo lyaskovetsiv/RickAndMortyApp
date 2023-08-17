@@ -42,11 +42,24 @@ final class MainPresenter: IMainPresenter {
 		}
 	}
 
+	
 	public func getNumberOfCharacters() -> Int {
 		characters.count
 	}
 
 	public func getCharacter(by indexPath: IndexPath) -> Character {
-		characters[indexPath.row]
+		characters[indexPath.item]
+	}
+
+	public func getImage(url: String, completion: @escaping (Data?) -> Void) {
+		remoteDataService.loadImage(from: url) { result in
+			switch result {
+			case .success(let model):
+				completion(model)
+			case .failure(let error):
+				print(error.localizedDescription)
+				completion(nil)
+			}
+		}
 	}
 }

@@ -135,8 +135,8 @@
 		A00C3B5F2A8E68B70003EAA5 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				A00C3B462A8E564A0003EAA5 /* MainVC.swift */,
 				A00C3B652A8E69910003EAA5 /* IMainView.swift */,
+				A00C3B462A8E564A0003EAA5 /* MainVC.swift */,
 				A00C3B5E2A8E68B00003EAA5 /* Cells */,
 			);
 			path = View;

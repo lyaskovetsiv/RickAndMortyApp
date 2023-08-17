@@ -11,7 +11,7 @@ import UIKit
 /// Класс вью Main модуля
 final class MainVC: UIViewController {
 
-	var presenter: IMainPresenter?
+	var presenter: IMainPresenter!
 
 	// MARK: - Private properties
 
@@ -19,7 +19,6 @@ final class MainVC: UIViewController {
 		let layout = UICollectionViewFlowLayout()
 		let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
 		view.contentInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
-		view.backgroundColor = .red
 		view.showsVerticalScrollIndicator = false
 		view.register(CharacterCell.self, forCellWithReuseIdentifier: CharacterCell.identifier)
 		return view
@@ -56,6 +55,16 @@ extension MainVC {
 			mainCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
 		])
 	}
+
+	private func loadImageFor(cell: CharacterCell, character: Character) {
+		presenter?.getImage(url: character.image ?? "") { data in
+			if let data = data {
+				DispatchQueue.main.async {
+					cell.updateImage(data: data)
+				}
+			}
+		}
+	}
 }
 
 // MARK: - IMainView
@@ -77,9 +86,9 @@ extension MainVC: UICollectionViewDataSource {
 		guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CharacterCell.identifier, for: indexPath) as? CharacterCell else {
 			fatalError("Failed to load CharacterCell")
 		}
-		if let character = presenter?.getCharacter(by: indexPath) {
-			cell.configureCell(with: character)
-		}
+		let character = presenter.getCharacter(by: indexPath)
+		cell.configureCell(with: character)
+		loadImageFor(cell: cell, character: character)
 		return cell
 	}
 }

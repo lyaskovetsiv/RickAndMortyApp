@@ -13,7 +13,7 @@ final class CharacterCell: UICollectionViewCell {
 
 	private var photoImageView: UIImageView = {
 		let view = UIImageView(frame: .zero)
-		view.backgroundColor = .yellow
+		view.backgroundColor = .black
 		view.layer.cornerRadius = 10
 		return view
 	}()
@@ -24,6 +24,11 @@ final class CharacterCell: UICollectionViewCell {
 		view.font = .systemFont(ofSize: 15)
 		view.textAlignment = .center
 		view.numberOfLines = 1
+		return view
+	}()
+
+	private var activityIndicator: UIActivityIndicatorView = {
+		let view = UIActivityIndicatorView(frame: .zero)
 		return view
 	}()
 
@@ -42,6 +47,16 @@ final class CharacterCell: UICollectionViewCell {
 
 	public func configureCell(with model: Character) {
 		nameLabel.text = model.name
+		activityIndicator.isHidden = false
+		activityIndicator.startAnimating()
+	}
+
+	public func updateImage(data: Data) {
+		if let image = UIImage(data: data) {
+			photoImageView.image = image
+			activityIndicator.stopAnimating()
+			activityIndicator.isHidden = true
+		}
 	}
 }
 
@@ -52,6 +67,7 @@ extension CharacterCell {
 		backgroundColor = #colorLiteral(red: 0.1501607001, green: 0.1651832163, blue: 0.2201651633, alpha: 1)
 		layer.cornerRadius = 16
 		addSubview(photoImageView)
+		photoImageView.addSubview(activityIndicator)
 		addSubview(nameLabel)
 		setupConstraits()
 	}
@@ -71,6 +87,12 @@ extension CharacterCell {
 			nameLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
 			nameLabel.topAnchor.constraint(equalTo: photoImageView.bottomAnchor, constant: 16),
 			nameLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16)
+		])
+
+		activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+		NSLayoutConstraint.activate([
+			activityIndicator.centerXAnchor.constraint(equalTo: photoImageView.centerXAnchor),
+			activityIndicator.centerYAnchor.constraint(equalTo: photoImageView.centerYAnchor),
 		])
 	}
 }
