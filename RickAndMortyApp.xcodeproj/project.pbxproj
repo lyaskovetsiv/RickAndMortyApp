@@ -21,6 +21,9 @@
 		A00C3B6C2A8E6B140003EAA5 /* RemoteDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00C3B6B2A8E6B140003EAA5 /* RemoteDataService.swift */; };
 		A00C3B702A8E6B450003EAA5 /* IRemoteDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00C3B6F2A8E6B450003EAA5 /* IRemoteDataService.swift */; };
 		A00C3B722A8E6BA90003EAA5 /* ServiceAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00C3B712A8E6BA90003EAA5 /* ServiceAssembly.swift */; };
+		A00C3B742A8E6D010003EAA5 /* ServerResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00C3B732A8E6D010003EAA5 /* ServerResponse.swift */; };
+		A00C3B762A8E6D200003EAA5 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00C3B752A8E6D200003EAA5 /* Character.swift */; };
+		A00C3B792A8E6EF30003EAA5 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00C3B782A8E6EF30003EAA5 /* NetworkError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +43,9 @@
 		A00C3B6B2A8E6B140003EAA5 /* RemoteDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteDataService.swift; sourceTree = "<group>"; };
 		A00C3B6F2A8E6B450003EAA5 /* IRemoteDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRemoteDataService.swift; sourceTree = "<group>"; };
 		A00C3B712A8E6BA90003EAA5 /* ServiceAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceAssembly.swift; sourceTree = "<group>"; };
+		A00C3B732A8E6D010003EAA5 /* ServerResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerResponse.swift; sourceTree = "<group>"; };
+		A00C3B752A8E6D200003EAA5 /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
+		A00C3B782A8E6EF30003EAA5 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +109,7 @@
 		A00C3B5A2A8E5FB00003EAA5 /* MainModule */ = {
 			isa = PBXGroup;
 			children = (
+				A00C3B772A8E6D330003EAA5 /* Model */,
 				A00C3B622A8E692D0003EAA5 /* Presenter */,
 				A00C3B5F2A8E68B70003EAA5 /* View */,
 			);
@@ -165,6 +172,7 @@
 		A00C3B6D2A8E6B2B0003EAA5 /* RemoteDataService */ = {
 			isa = PBXGroup;
 			children = (
+				A00C3B7A2A8E712F0003EAA5 /* NetworkError */,
 				A00C3B6F2A8E6B450003EAA5 /* IRemoteDataService.swift */,
 				A00C3B6B2A8E6B140003EAA5 /* RemoteDataService.swift */,
 			);
@@ -177,6 +185,23 @@
 				A00C3B6D2A8E6B2B0003EAA5 /* RemoteDataService */,
 			);
 			path = NetworkLayer;
+			sourceTree = "<group>";
+		};
+		A00C3B772A8E6D330003EAA5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A00C3B732A8E6D010003EAA5 /* ServerResponse.swift */,
+				A00C3B752A8E6D200003EAA5 /* Character.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A00C3B7A2A8E712F0003EAA5 /* NetworkError */ = {
+			isa = PBXGroup;
+			children = (
+				A00C3B782A8E6EF30003EAA5 /* NetworkError.swift */,
+			);
+			path = NetworkError;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -252,11 +277,14 @@
 				A00C3B5D2A8E62AF0003EAA5 /* CharacterCell.swift in Sources */,
 				A00C3B612A8E69200003EAA5 /* MainPresenter.swift in Sources */,
 				A00C3B472A8E564A0003EAA5 /* MainVC.swift in Sources */,
+				A00C3B742A8E6D010003EAA5 /* ServerResponse.swift in Sources */,
 				A00C3B662A8E69910003EAA5 /* IMainView.swift in Sources */,
 				A00C3B692A8E6A2B0003EAA5 /* ModuleAssembly.swift in Sources */,
 				A00C3B702A8E6B450003EAA5 /* IRemoteDataService.swift in Sources */,
 				A00C3B432A8E564A0003EAA5 /* AppDelegate.swift in Sources */,
 				A00C3B642A8E69390003EAA5 /* IMainPresenter.swift in Sources */,
+				A00C3B792A8E6EF30003EAA5 /* NetworkError.swift in Sources */,
+				A00C3B762A8E6D200003EAA5 /* Character.swift in Sources */,
 				A00C3B6C2A8E6B140003EAA5 /* RemoteDataService.swift in Sources */,
 				A00C3B722A8E6BA90003EAA5 /* ServiceAssembly.swift in Sources */,
 				A00C3B452A8E564A0003EAA5 /* SceneDelegate.swift in Sources */,

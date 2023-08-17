@@ -40,8 +40,8 @@ final class CharacterCell: UICollectionViewCell {
 
 	// MARK: - Public methods
 
-	public func configureCell(with model: String) {
-		nameLabel.text = model
+	public func configureCell(with model: Character) {
+		nameLabel.text = model.name
 	}
 }
 

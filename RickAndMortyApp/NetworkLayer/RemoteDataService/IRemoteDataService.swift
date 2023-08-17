@@ -8,5 +8,5 @@
 import Foundation
 
 protocol IRemoteDataService: AnyObject {
-	
+	func loadCharacters(completion: @escaping (Result<[Character], Error>) -> Void)
 }

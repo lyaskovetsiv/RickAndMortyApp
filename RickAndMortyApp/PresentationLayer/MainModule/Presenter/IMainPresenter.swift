@@ -8,5 +8,7 @@
 import Foundation
 
 protocol IMainPresenter: AnyObject {
-
+	func viewDidLoad()
+	func getNumberOfCharacters() -> Int
+	func getCharacter(by indexPath: IndexPath) -> Character
 }

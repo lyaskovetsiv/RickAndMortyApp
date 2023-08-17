@@ -25,13 +25,12 @@ final class MainVC: UIViewController {
 		return view
 	}()
 
-	private var characters: [String] = ["Rick Sanchez", "Morty Smith", "Summer Smith", "Beth Smith", "Rick Smith", "Morty Smith", "Summer Smith", "Beth Smith", "Rick Smith"]
-
 	// MARK: - LifeCycleOfVC
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		setupView()
+		presenter?.viewDidLoad()
 	}
 }
 
@@ -62,21 +61,25 @@ extension MainVC {
 // MARK: - IMainView
 
 extension MainVC: IMainView {
-
+	public func updateUI() {
+		mainCollectionView.reloadData()
+	}
 }
 
 // MARK: - UICollectionViewDataSource
 
 extension MainVC: UICollectionViewDataSource {
 	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-		characters.count
+		presenter?.getNumberOfCharacters() ?? 0
 	}
 
 	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 		guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CharacterCell.identifier, for: indexPath) as? CharacterCell else {
 			fatalError("Failed to load CharacterCell")
 		}
-		cell.configureCell(with: characters[indexPath.row])
+		if let character = presenter?.getCharacter(by: indexPath) {
+			cell.configureCell(with: character)
+		}
 		return cell
 	}
 }
