@@ -75,6 +75,16 @@ extension MainVC: IMainView {
 	public func updateUI() {
 		mainCollectionView.reloadData()
 	}
+
+	/// Метод вью. отображающий всплывающее окно с ошибкой
+	public func showAlert() {
+		let alertVC = UIAlertController(title: "Oops!",
+										message: "Failed by uploading data from network. Try to reload later!",
+										preferredStyle: .alert)
+		let okAction = UIAlertAction(title: "Ok!", style: .default)
+		alertVC.addAction(okAction)
+		present(alertVC, animated: true)
+	}
 }
 
 // MARK: - UICollectionViewDataSource

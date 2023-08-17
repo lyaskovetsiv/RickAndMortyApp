@@ -10,4 +10,5 @@ import Foundation
 /// Протокол вью Main модуля
 protocol IMainView: AnyObject {
 	func updateUI()
+	func showAlert()
 }

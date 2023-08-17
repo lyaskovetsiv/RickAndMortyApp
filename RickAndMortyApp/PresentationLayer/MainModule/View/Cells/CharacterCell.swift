@@ -22,7 +22,7 @@ final class CharacterCell: UICollectionViewCell {
 	private var nameLabel: UILabel = {
 		let view = UILabel(frame: .zero)
 		view.tintColor = .white
-		view.font = UIFont(name: "Gilroy-ExtraBold", size: 15)
+		view.font = UIFont(name: "Gilroy-ExtraBold", size: 16)
 		view.textAlignment = .center
 		view.numberOfLines = 1
 		return view

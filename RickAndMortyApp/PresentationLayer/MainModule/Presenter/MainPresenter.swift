@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 /// Класс презентера Main модуля
 final class MainPresenter: IMainPresenter {
 
@@ -39,7 +38,10 @@ final class MainPresenter: IMainPresenter {
 					self.view?.updateUI()
 				}
 			case .failure(let error):
-				print(error)
+				print(error.localizedDescription)
+				DispatchQueue.main.async {
+					self.view?.showAlert()
+				}
 			}
 		}
 	}

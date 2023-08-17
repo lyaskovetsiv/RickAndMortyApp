@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 /// Протокол презентера Main модуля
 protocol IMainPresenter: AnyObject {
 	func viewDidLoad()
