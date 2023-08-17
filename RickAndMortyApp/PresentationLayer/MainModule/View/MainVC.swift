@@ -1,5 +1,5 @@
 //
-//  MainViewController.swift
+//  MainVC.swift
 //  RickAndMortyApp
 //
 //  Created by Иван Лясковец on 17.08.2023.
@@ -7,7 +7,12 @@
 
 import UIKit
 
-final class MainViewController: UIViewController {
+
+/// Класс вью Main модуля
+final class MainVC: UIViewController {
+
+	var presenter: IMainPresenter?
+
 	// MARK: - Private properties
 
 	private var mainCollectionView: UICollectionView = {
@@ -32,15 +37,13 @@ final class MainViewController: UIViewController {
 
 // MARK: - Private methods
 
-extension MainViewController {
+extension MainVC {
 	private func setupView() {
 		title = "Characters"
 		view.backgroundColor = #colorLiteral(red: 0.01332889963, green: 0.04810451716, blue: 0.1187042817, alpha: 1)
 		navigationController?.navigationBar.prefersLargeTitles = true
-
 		mainCollectionView.dataSource = self
 		mainCollectionView.delegate = self
-
 		view.addSubview(mainCollectionView)
 		setupConstraits()
 	}
@@ -56,9 +59,15 @@ extension MainViewController {
 	}
 }
 
+// MARK: - IMainView
+
+extension MainVC: IMainView {
+
+}
+
 // MARK: - UICollectionViewDataSource
 
-extension MainViewController: UICollectionViewDataSource {
+extension MainVC: UICollectionViewDataSource {
 	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 		characters.count
 	}
@@ -74,22 +83,14 @@ extension MainViewController: UICollectionViewDataSource {
 
 // MARK: - UICollectionViewDelegate
 
-extension MainViewController: UICollectionViewDelegate {
+extension MainVC: UICollectionViewDelegate {
 
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout
 
-extension MainViewController: UICollectionViewDelegateFlowLayout {
+extension MainVC: UICollectionViewDelegateFlowLayout {
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 		CGSize(width: 156, height: 202)
-	}
-
-	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-		16
-	}
-
-	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-		16
 	}
 }
