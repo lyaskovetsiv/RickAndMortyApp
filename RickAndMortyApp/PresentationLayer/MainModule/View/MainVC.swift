@@ -5,6 +5,7 @@
 //  Created by Иван Лясковец on 17.08.2023.
 //
 
+import SwiftUI
 import UIKit
 
 /// Класс вью Main модуля
@@ -108,8 +109,10 @@ extension MainVC: UICollectionViewDataSource {
 // MARK: - UICollectionViewDelegate
 
 extension MainVC: UICollectionViewDelegate {
-	func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-
+	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+		let character = presenter.getCharacter(by: indexPath)
+		let host = UIHostingController(rootView: DetailsView(character: character))
+		navigationController?.pushViewController(host, animated: true)
 	}
 }
 
