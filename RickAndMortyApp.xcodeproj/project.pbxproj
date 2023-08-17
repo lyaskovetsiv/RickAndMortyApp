@@ -17,7 +17,10 @@
 		A00C3B612A8E69200003EAA5 /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00C3B602A8E69200003EAA5 /* MainPresenter.swift */; };
 		A00C3B642A8E69390003EAA5 /* IMainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00C3B632A8E69390003EAA5 /* IMainPresenter.swift */; };
 		A00C3B662A8E69910003EAA5 /* IMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00C3B652A8E69910003EAA5 /* IMainView.swift */; };
-		A00C3B692A8E6A2B0003EAA5 /* ModuleAssemble.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00C3B682A8E6A2B0003EAA5 /* ModuleAssemble.swift */; };
+		A00C3B692A8E6A2B0003EAA5 /* ModuleAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00C3B682A8E6A2B0003EAA5 /* ModuleAssembly.swift */; };
+		A00C3B6C2A8E6B140003EAA5 /* RemoteDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00C3B6B2A8E6B140003EAA5 /* RemoteDataService.swift */; };
+		A00C3B702A8E6B450003EAA5 /* IRemoteDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00C3B6F2A8E6B450003EAA5 /* IRemoteDataService.swift */; };
+		A00C3B722A8E6BA90003EAA5 /* ServiceAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00C3B712A8E6BA90003EAA5 /* ServiceAssembly.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,7 +36,10 @@
 		A00C3B602A8E69200003EAA5 /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
 		A00C3B632A8E69390003EAA5 /* IMainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMainPresenter.swift; sourceTree = "<group>"; };
 		A00C3B652A8E69910003EAA5 /* IMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMainView.swift; sourceTree = "<group>"; };
-		A00C3B682A8E6A2B0003EAA5 /* ModuleAssemble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleAssemble.swift; sourceTree = "<group>"; };
+		A00C3B682A8E6A2B0003EAA5 /* ModuleAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleAssembly.swift; sourceTree = "<group>"; };
+		A00C3B6B2A8E6B140003EAA5 /* RemoteDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteDataService.swift; sourceTree = "<group>"; };
+		A00C3B6F2A8E6B450003EAA5 /* IRemoteDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRemoteDataService.swift; sourceTree = "<group>"; };
+		A00C3B712A8E6BA90003EAA5 /* ServiceAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceAssembly.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,7 +74,8 @@
 			children = (
 				A00C3B502A8E564B0003EAA5 /* Info.plist */,
 				A00C3B562A8E56A90003EAA5 /* Application */,
-				A00C3B6A2A8E6A8C0003EAA5 /* Assemble */,
+				A00C3B6A2A8E6A8C0003EAA5 /* Assembly */,
+				A00C3B6E2A8E6B330003EAA5 /* NetworkLayer */,
 				A00C3B672A8E69C90003EAA5 /* PresentationLayer */,
 			);
 			path = RickAndMortyApp;
@@ -146,12 +153,30 @@
 			path = PresentationLayer;
 			sourceTree = "<group>";
 		};
-		A00C3B6A2A8E6A8C0003EAA5 /* Assemble */ = {
+		A00C3B6A2A8E6A8C0003EAA5 /* Assembly */ = {
 			isa = PBXGroup;
 			children = (
-				A00C3B682A8E6A2B0003EAA5 /* ModuleAssemble.swift */,
+				A00C3B682A8E6A2B0003EAA5 /* ModuleAssembly.swift */,
+				A00C3B712A8E6BA90003EAA5 /* ServiceAssembly.swift */,
 			);
-			path = Assemble;
+			path = Assembly;
+			sourceTree = "<group>";
+		};
+		A00C3B6D2A8E6B2B0003EAA5 /* RemoteDataService */ = {
+			isa = PBXGroup;
+			children = (
+				A00C3B6F2A8E6B450003EAA5 /* IRemoteDataService.swift */,
+				A00C3B6B2A8E6B140003EAA5 /* RemoteDataService.swift */,
+			);
+			path = RemoteDataService;
+			sourceTree = "<group>";
+		};
+		A00C3B6E2A8E6B330003EAA5 /* NetworkLayer */ = {
+			isa = PBXGroup;
+			children = (
+				A00C3B6D2A8E6B2B0003EAA5 /* RemoteDataService */,
+			);
+			path = NetworkLayer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -228,9 +253,12 @@
 				A00C3B612A8E69200003EAA5 /* MainPresenter.swift in Sources */,
 				A00C3B472A8E564A0003EAA5 /* MainVC.swift in Sources */,
 				A00C3B662A8E69910003EAA5 /* IMainView.swift in Sources */,
-				A00C3B692A8E6A2B0003EAA5 /* ModuleAssemble.swift in Sources */,
+				A00C3B692A8E6A2B0003EAA5 /* ModuleAssembly.swift in Sources */,
+				A00C3B702A8E6B450003EAA5 /* IRemoteDataService.swift in Sources */,
 				A00C3B432A8E564A0003EAA5 /* AppDelegate.swift in Sources */,
 				A00C3B642A8E69390003EAA5 /* IMainPresenter.swift in Sources */,
+				A00C3B6C2A8E6B140003EAA5 /* RemoteDataService.swift in Sources */,
+				A00C3B722A8E6BA90003EAA5 /* ServiceAssembly.swift in Sources */,
 				A00C3B452A8E564A0003EAA5 /* SceneDelegate.swift in Sources */,
 				A00C3B592A8E5FA10003EAA5 /* DetailsViewController.swift in Sources */,
 			);
