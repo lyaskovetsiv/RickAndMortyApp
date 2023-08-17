@@ -11,4 +11,9 @@ import Foundation
 struct Character: Codable {
 	var name: String
 	var image: String?
+	var status: String
+	var species: String
+	var type: String
+	var gender: String
 }
+

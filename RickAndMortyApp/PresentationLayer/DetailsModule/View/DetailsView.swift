@@ -21,7 +21,24 @@ struct DetailsView: View {
 
 	// MARK: - UI
 	var body: some View {
-		Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+		ZStack {
+			Color.backgroundColor
+			VStack {
+				AsyncImage(url: URL(string: character.image ?? ""))
+					.frame(width: 148, height: 148)
+					.clipShape(RoundedRectangle(cornerRadius: 16))
+				VStack (spacing: 8) {
+					Text("\(character.name)")
+						.font(Font.custom("Gilroy-ExtraBold", fixedSize: 22))
+					Text("\(character.status)")
+						.font(Font.custom("Gilroy-Light", size: 16))
+						.foregroundColor(Color.greenFuxia)
+				}
+				.padding()
+				InfoView(character: character)
+			}
+		}
+		.ignoresSafeArea()
 	}
 }
 
@@ -29,6 +46,10 @@ struct DetailsView: View {
 
 struct DetailsView_Previews: PreviewProvider {
 	static var previews: some View {
-		DetailsView(character: Character(name: "Ivan"))
+		DetailsView(character: Character(name: "Rick Sanchez",
+										 status: "Alive",
+										 species: "Human",
+										 type: "None",
+										 gender: "Male"))
 	}
 }
