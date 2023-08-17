@@ -7,13 +7,18 @@
 
 import Foundation
 
-enum NetworkError: Error, CustomStringConvertible {
+/// Перечисление с ошибками при работе с удаленным сервером
+enum NetworkError: Error {
+	case badUrl
+}
+
+// MARK: - CustomStringConvertible
+
+extension NetworkError: CustomStringConvertible {
 	var description: String {
 		switch self {
 		case .badUrl:
 			return "Failed to get URL from string"
 		}
 	}
-
-	case badUrl
 }

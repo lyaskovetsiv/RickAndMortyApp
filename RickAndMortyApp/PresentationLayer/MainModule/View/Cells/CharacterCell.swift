@@ -7,9 +7,12 @@
 
 import UIKit
 
+/// Класс ячейки коллекции с персонажами
 final class CharacterCell: UICollectionViewCell {
 
-	static let identifier: String = "characterCell"
+
+
+	// MARK: - Private properties
 
 	private var photoImageView: UIImageView = {
 		let view = UIImageView(frame: .zero)
@@ -43,13 +46,11 @@ final class CharacterCell: UICollectionViewCell {
 		fatalError("init(coder:) has not been implemented")
 	}
 
-	// MARK: - Public methods
-
-	public func configureCell(with model: Character) {
-		nameLabel.text = model.name
-		activityIndicator.isHidden = false
-		activityIndicator.startAnimating()
+	override func prepareForReuse() {
+		clearCell()
 	}
+
+	// MARK: - Public methods
 
 	public func updateImage(data: Data) {
 		if let image = UIImage(data: data) {
@@ -94,5 +95,30 @@ extension CharacterCell {
 			activityIndicator.centerXAnchor.constraint(equalTo: photoImageView.centerXAnchor),
 			activityIndicator.centerYAnchor.constraint(equalTo: photoImageView.centerYAnchor),
 		])
+	}
+
+	private func clearCell() {
+		nameLabel.text = ""
+		photoImageView.image = nil
+	}
+}
+
+// MARK: - IReusableCell
+
+extension CharacterCell: IReusableCell {
+	static let identifier: String = "characterCell"
+}
+
+// MARK: - IConfurableCell
+
+extension CharacterCell: IConfurableCell {
+	typealias ConfigurationModel = Character
+
+	/// Метод ячейки для ее настройки
+	/// - Parameter model: Модель персонажа
+	public func configure(with model: Character) {
+		clearCell()
+		nameLabel.text = model.name
+		activityIndicator.startAnimating()
 	}
 }

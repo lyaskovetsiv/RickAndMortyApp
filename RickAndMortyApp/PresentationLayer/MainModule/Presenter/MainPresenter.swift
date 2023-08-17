@@ -7,8 +7,9 @@
 
 import Foundation
 
+
+/// Класс презентера Main модуля
 final class MainPresenter: IMainPresenter {
-	// MARK: - Public properties
 
 	weak var view: IMainView?
 
@@ -27,6 +28,7 @@ final class MainPresenter: IMainPresenter {
 
 	// MARK: - Public methods
 
+	/// Метод презентера, обрабатывающий этап жц контроллера, когда вью загрузилась
 	public func viewDidLoad() {
 		remoteDataService.loadCharacters { [weak self] result in
 			guard let self = self else { return }
@@ -42,23 +44,32 @@ final class MainPresenter: IMainPresenter {
 		}
 	}
 
-	
+	/// Метод презентера, вовращающий количество персонадей
+	/// - Returns: Количество персонажей
 	public func getNumberOfCharacters() -> Int {
-		characters.count
+		return characters.count
 	}
 
+	/// Метод презентера, возвращающий персонажа по индексу
+	/// - Parameter indexPath: Индекс
+	/// - Returns: Модель с персонажем
 	public func getCharacter(by indexPath: IndexPath) -> Character {
-		characters[indexPath.item]
+		return characters[indexPath.item]
 	}
 
+	/// Метод презентера, выполняющий загрузку картинки для персонажа
+	/// - Parameters:
+	///   - url: Адрес картинки
+	///   - completion: Обработчик завершения
 	public func getImage(url: String, completion: @escaping (Data?) -> Void) {
 		remoteDataService.loadImage(from: url) { result in
 			switch result {
-			case .success(let model):
-				completion(model)
+			case .success(let imageData):
+				completion(imageData)
 			case .failure(let error):
-				print(error.localizedDescription)
 				completion(nil)
+				print(error)
+				// Обработать ошибку загрузки картинки
 			}
 		}
 	}

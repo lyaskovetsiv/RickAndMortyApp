@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 /// Класс вью Main модуля
 final class MainVC: UIViewController {
 
@@ -70,6 +69,7 @@ extension MainVC {
 // MARK: - IMainView
 
 extension MainVC: IMainView {
+	/// Метод вью, обновляющий коллекцию
 	public func updateUI() {
 		mainCollectionView.reloadData()
 	}
@@ -87,7 +87,7 @@ extension MainVC: UICollectionViewDataSource {
 			fatalError("Failed to load CharacterCell")
 		}
 		let character = presenter.getCharacter(by: indexPath)
-		cell.configureCell(with: character)
+		cell.configure(with: character)
 		loadImageFor(cell: cell, character: character)
 		return cell
 	}
@@ -96,7 +96,9 @@ extension MainVC: UICollectionViewDataSource {
 // MARK: - UICollectionViewDelegate
 
 extension MainVC: UICollectionViewDelegate {
+	func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
 
+	}
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout

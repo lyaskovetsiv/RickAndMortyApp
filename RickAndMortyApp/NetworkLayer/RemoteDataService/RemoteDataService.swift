@@ -6,8 +6,11 @@
 //
 
 import Foundation
+import UIKit
 
 final class RemoteDataService: IRemoteDataService {
+
+	private var imageCache = NSCache<NSString, UIImage>()
 
 	public func loadCharacters(completion: @escaping (Result<[Character], Error>) -> Void) {
 		guard let url = URL(string: "https://rickandmortyapi.com/api/character") else {
@@ -39,7 +42,6 @@ final class RemoteDataService: IRemoteDataService {
 	}
 
 	public func loadImage(from stringUrl: String, completion: @escaping (Result<Data, Error>) -> Void) {
-		print(stringUrl)
 		guard let url = URL(string: stringUrl) else {
 			completion(.failure(NetworkError.badUrl))
 			return

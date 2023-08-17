@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Модель персонажа
 struct Character: Codable {
 	var name: String
 	var image: String?
