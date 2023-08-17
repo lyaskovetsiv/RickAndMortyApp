@@ -12,6 +12,7 @@
 		A00C3B472A8E564A0003EAA5 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00C3B462A8E564A0003EAA5 /* MainViewController.swift */; };
 		A00C3B4C2A8E564B0003EAA5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A00C3B4B2A8E564B0003EAA5 /* Assets.xcassets */; };
 		A00C3B4F2A8E564B0003EAA5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A00C3B4D2A8E564B0003EAA5 /* LaunchScreen.storyboard */; };
+		A00C3B592A8E5FA10003EAA5 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00C3B582A8E5FA10003EAA5 /* DetailsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		A00C3B4B2A8E564B0003EAA5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A00C3B4E2A8E564B0003EAA5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A00C3B502A8E564B0003EAA5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A00C3B582A8E5FA10003EAA5 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,7 +58,8 @@
 			children = (
 				A00C3B502A8E564B0003EAA5 /* Info.plist */,
 				A00C3B562A8E56A90003EAA5 /* Application */,
-				A00C3B462A8E564A0003EAA5 /* MainViewController.swift */,
+				A00C3B5A2A8E5FB00003EAA5 /* MainModule */,
+				A00C3B5B2A8E5FBD0003EAA5 /* DetailsModule */,
 			);
 			path = RickAndMortyApp;
 			sourceTree = "<group>";
@@ -78,6 +81,22 @@
 				A00C3B4D2A8E564B0003EAA5 /* LaunchScreen.storyboard */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		A00C3B5A2A8E5FB00003EAA5 /* MainModule */ = {
+			isa = PBXGroup;
+			children = (
+				A00C3B462A8E564A0003EAA5 /* MainViewController.swift */,
+			);
+			path = MainModule;
+			sourceTree = "<group>";
+		};
+		A00C3B5B2A8E5FBD0003EAA5 /* DetailsModule */ = {
+			isa = PBXGroup;
+			children = (
+				A00C3B582A8E5FA10003EAA5 /* DetailsViewController.swift */,
+			);
+			path = DetailsModule;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -153,6 +172,7 @@
 				A00C3B472A8E564A0003EAA5 /* MainViewController.swift in Sources */,
 				A00C3B432A8E564A0003EAA5 /* AppDelegate.swift in Sources */,
 				A00C3B452A8E564A0003EAA5 /* SceneDelegate.swift in Sources */,
+				A00C3B592A8E5FA10003EAA5 /* DetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
