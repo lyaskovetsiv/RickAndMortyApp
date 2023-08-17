@@ -71,7 +71,6 @@ final class MainPresenter: IMainPresenter {
 			case .failure(let error):
 				completion(nil)
 				print(error)
-				// Обработать ошибку загрузки картинки
 			}
 		}
 	}
