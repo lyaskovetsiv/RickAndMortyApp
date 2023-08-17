@@ -36,27 +36,16 @@ final class RemoteDataService: IRemoteDataService {
 		}
 	}
 
+	/// Метод сервиса, который отвечает за загрузку картинок
+	/// - Parameter completion: Обработчик завершения
 	public func loadImage(from stringUrl: String, completion: @escaping (Result<Data, Error>) -> Void) {
-		guard let url = URL(string: stringUrl) else {
-			completion(.failure(NetworkError.badUrl))
-			return
-		}
-		var request = URLRequest(url: url)
-		request.httpMethod = "GET"
-		let task = URLSession.shared.dataTask(with: request) { data, _, error in
-			if let error = error {
-				completion(.failure(error))
-			}
-			guard let data = data else {
-				print(error)
-				return
-			}
-			do {
+		networkService.sendRequest(path: stringUrl, needDecoding: false) { (result: Result<Data, Error>) in
+			switch result {
+			case .success(let data):
 				completion(.success(data))
-			} catch {
+			case .failure(let error):
 				completion(.failure(error))
 			}
 		}
-		task.resume()
 	}
 }
