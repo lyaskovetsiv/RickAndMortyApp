@@ -14,8 +14,8 @@ final class CharacterCell: UICollectionViewCell {
 
 	private var photoImageView: UIImageView = {
 		let view = UIImageView(frame: .zero)
-		view.backgroundColor = .black
 		view.layer.cornerRadius = 10
+		view.clipsToBounds = true
 		return view
 	}()
 
@@ -50,8 +50,8 @@ final class CharacterCell: UICollectionViewCell {
 
 	// MARK: - Public methods
 
-	public func updateImage(data: Data) {
-		if let image = UIImage(data: data) {
+	public func updateImage(model: ImageModel) {
+		if let image = model.image {
 			photoImageView.image = image
 			activityIndicator.stopAnimating()
 			activityIndicator.isHidden = true
@@ -111,7 +111,6 @@ extension CharacterCell: IReusableCell {
 
 extension CharacterCell: IConfurableCell {
 	typealias ConfigurationModel = Character
-
 	/// Метод ячейки для ее настройки
 	/// - Parameter model: Модель персонажа
 	public func configure(with model: Character) {

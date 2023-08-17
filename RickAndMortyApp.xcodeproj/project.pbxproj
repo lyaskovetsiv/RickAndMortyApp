@@ -30,6 +30,7 @@
 		A00C3B872A8E88750003EAA5 /* Gilroy-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = A00C3B862A8E88750003EAA5 /* Gilroy-ExtraBold.otf */; };
 		A00C3B8A2A8E8D690003EAA5 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00C3B892A8E8D690003EAA5 /* NetworkService.swift */; };
 		A00C3B8C2A8E8DEE0003EAA5 /* INetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00C3B8B2A8E8DEE0003EAA5 /* INetworkService.swift */; };
+		A00C3B902A8E97B90003EAA5 /* ImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00C3B8F2A8E97B90003EAA5 /* ImageModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		A00C3B862A8E88750003EAA5 /* Gilroy-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-ExtraBold.otf"; sourceTree = "<group>"; };
 		A00C3B892A8E8D690003EAA5 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		A00C3B8B2A8E8DEE0003EAA5 /* INetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INetworkService.swift; sourceTree = "<group>"; };
+		A00C3B8F2A8E97B90003EAA5 /* ImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -205,6 +207,7 @@
 			children = (
 				A00C3B732A8E6D010003EAA5 /* ServerResponse.swift */,
 				A00C3B752A8E6D200003EAA5 /* Character.swift */,
+				A00C3B8F2A8E97B90003EAA5 /* ImageModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -213,7 +216,6 @@
 			isa = PBXGroup;
 			children = (
 				A00C3B782A8E6EF30003EAA5 /* NetworkError.swift */,
-				A00C3B8B2A8E8DEE0003EAA5 /* INetworkService.swift */,
 			);
 			path = NetworkError;
 			sourceTree = "<group>";
@@ -249,6 +251,7 @@
 			isa = PBXGroup;
 			children = (
 				A00C3B7A2A8E712F0003EAA5 /* NetworkError */,
+				A00C3B8B2A8E8DEE0003EAA5 /* INetworkService.swift */,
 				A00C3B892A8E8D690003EAA5 /* NetworkService.swift */,
 			);
 			path = NetworkService;
@@ -335,6 +338,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A00C3B802A8E84180003EAA5 /* IReusableCell.swift in Sources */,
+				A00C3B902A8E97B90003EAA5 /* ImageModel.swift in Sources */,
 				A00C3B5D2A8E62AF0003EAA5 /* CharacterCell.swift in Sources */,
 				A00C3B612A8E69200003EAA5 /* MainPresenter.swift in Sources */,
 				A00C3B472A8E564A0003EAA5 /* MainVC.swift in Sources */,

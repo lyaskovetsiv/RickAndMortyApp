@@ -61,7 +61,7 @@ extension MainVC {
 		presenter?.getImage(url: character.image ?? "") { data in
 			if let data = data {
 				DispatchQueue.main.async {
-					cell.updateImage(data: data)
+					cell.updateImage(model: data)
 				}
 			}
 		}

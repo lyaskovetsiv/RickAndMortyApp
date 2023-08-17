@@ -38,13 +38,39 @@ final class RemoteDataService: IRemoteDataService {
 
 	/// Метод сервиса, который отвечает за загрузку картинок
 	/// - Parameter completion: Обработчик завершения
-	public func loadImage(from stringUrl: String, completion: @escaping (Result<Data, Error>) -> Void) {
-		networkService.sendRequest(path: stringUrl, needDecoding: false) { (result: Result<Data, Error>) in
-			switch result {
-			case .success(let data):
-				completion(.success(data))
-			case .failure(let error):
-				completion(.failure(error))
+//	public func loadImage(from stringUrl: String, completion: @escaping (Result<Data, Error>) -> Void) {
+//		DispatchQueue.global().asyncAfter(deadline: .now() + 1.0) { [weak self]  in
+//			self?.networkService.sendRequest(path: stringUrl, needDecoding: false) { (result: Result<Data, Error>) in
+//				switch result {
+//				case .success(let data):
+//					completion(.success(data))
+//				case .failure(let error):
+//					completion(.failure(error))
+//				}
+//			}
+//		}
+//	}
+
+	public func loadImage(from stringUrl: String, completion: @escaping (Result<ImageModel, Error>) -> Void) {
+		if let cachedImage = imageCache.object(forKey: NSString(string: stringUrl)) {
+			let model = ImageModel(image: cachedImage)
+			completion(.success(model))
+		} else {
+			DispatchQueue.global().asyncAfter(deadline: .now() + 1.0) { [weak self]  in
+				self?.networkService.sendRequest(path: stringUrl, needDecoding: false) { (result: Result<Data, Error>) in
+					switch result {
+					case .success(let data):
+						guard let image = UIImage(data: data) else {
+							completion(.failure(NetworkError.badData))
+							return
+						}
+						self?.imageCache.setObject(image, forKey: NSString(string: stringUrl))
+						let model = ImageModel(image: image)
+						completion(.success(model))
+					case .failure(let error):
+						completion(.failure(error))
+					}
+				}
 			}
 		}
 	}

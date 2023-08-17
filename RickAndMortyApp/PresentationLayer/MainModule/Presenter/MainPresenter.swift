@@ -63,11 +63,11 @@ final class MainPresenter: IMainPresenter {
 	/// - Parameters:
 	///   - url: Адрес картинки
 	///   - completion: Обработчик завершения
-	public func getImage(url: String, completion: @escaping (Data?) -> Void) {
+	public func getImage(url: String, completion: @escaping (ImageModel?) -> Void) {
 		remoteDataService.loadImage(from: url) { result in
 			switch result {
-			case .success(let imageData):
-				completion(imageData)
+			case .success(let model):
+				completion(model)
 			case .failure(let error):
 				completion(nil)
 				print(error)
