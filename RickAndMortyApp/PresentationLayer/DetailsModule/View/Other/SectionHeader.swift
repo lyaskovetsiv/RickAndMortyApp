@@ -26,6 +26,6 @@ struct SectionHeader: View {
 				.font(Font.custom("Gilroy-Semibold", size: 17))
 			Spacer()
 		}
-			.padding(.leading, 24)
+		.padding(.leading, 24)
 	}
 }

@@ -12,18 +12,16 @@ struct Episode: Codable {
 	let air_date: String
 	let episode: String
 	var season: String {
-		let startIndex = episode.index(episode.startIndex, offsetBy: 1)
-		let endIndex = episode.index(episode.startIndex, offsetBy: 2)
-		var result = episode[startIndex...endIndex]
-		if result.first == "0" {
-			result.removeFirst()
-		}
-		return String(result)
+		getSubstring(from: episode, index1: 1, index2: 2)
 	}
 	var ep: String {
-		let startIndex = episode.index(episode.startIndex, offsetBy: 4)
-		let endIndex = episode.index(episode.startIndex, offsetBy: 5)
-		var result = episode[startIndex...endIndex]
+		getSubstring(from: episode, index1: 4, index2: 5)
+	}
+
+	private func getSubstring(from string: String, index1: Int, index2: Int) -> String {
+		let startIndex = string.index(string.startIndex, offsetBy: index1)
+		let endIndex = string.index(string.startIndex, offsetBy: index2)
+		var result = string[startIndex...endIndex]
 		if result.first == "0" {
 			result.removeFirst()
 		}
