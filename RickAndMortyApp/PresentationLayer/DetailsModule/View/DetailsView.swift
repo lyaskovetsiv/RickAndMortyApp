@@ -27,7 +27,7 @@ struct DetailsView: View {
 					HeaderView(viewModel: viewModel)
 					InfoView(viewModel: viewModel)
 					OriginView(viewModel: viewModel)
-					EpisodesView(character: viewModel.character)
+					EpisodesView(viewModel: viewModel)
 				}
 				.padding(.top, 100)
 			}
@@ -38,6 +38,7 @@ struct DetailsView: View {
 		.onAppear {
 			Task {
 				viewModel.loadPlace()
+				viewModel.loadEpisodes()
 			}
 		}
 	}

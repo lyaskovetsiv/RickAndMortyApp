@@ -14,6 +14,7 @@ final class DetailsViewModel: ObservableObject {
 
 	@Published var character: Character
 	@Published var place: Place?
+	@Published var episodes: [Episode] = []
 	private var remoteDataService: IRemoteDataService
 	private var moduleOutput: ModuleOutput
 
@@ -37,6 +38,22 @@ final class DetailsViewModel: ObservableObject {
 				}
 			case .failure(let error):
 				print(error)
+			}
+		}
+	}
+
+	/// Метод вьюмодели для загрузки информации об эпизодах
+	public func loadEpisodes() {
+		for episode in character.episode {
+			remoteDataService.loadEpisode(by: episode) { [weak self] result in
+				switch result {
+				case .success(let episode):
+					DispatchQueue.main.async { [weak self] in
+						self?.episodes.append(episode)
+					}
+				case .failure(let error):
+					print(error)
+				}
 			}
 		}
 	}

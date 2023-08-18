@@ -102,7 +102,6 @@
 		A00C3B362A8E564A0003EAA5 = {
 			isa = PBXGroup;
 			children = (
-				A0296D382A8F8DBE008360A5 /* Coordinator.swift */,
 				A00C3B412A8E564A0003EAA5 /* RickAndMortyApp */,
 				A00C3B402A8E564A0003EAA5 /* Products */,
 			);
@@ -122,6 +121,7 @@
 				A00C3B502A8E564B0003EAA5 /* Info.plist */,
 				A00C3B562A8E56A90003EAA5 /* Application */,
 				A00C3B6A2A8E6A8C0003EAA5 /* Assembly */,
+				A0296D3A2A8F9937008360A5 /* Coordinator */,
 				A00C3B832A8E84700003EAA5 /* Helpers */,
 				A00C3B8E2A8E8DFB0003EAA5 /* CoreLayer */,
 				A00C3B6E2A8E6B330003EAA5 /* ServiceLayer */,
@@ -332,6 +332,14 @@
 				A0296D352A8F87FD008360A5 /* DetailsViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		A0296D3A2A8F9937008360A5 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				A0296D382A8F8DBE008360A5 /* Coordinator.swift */,
+			);
+			path = Coordinator;
 			sourceTree = "<group>";
 		};
 		A057985F2A8EA058008E819D /* View */ = {

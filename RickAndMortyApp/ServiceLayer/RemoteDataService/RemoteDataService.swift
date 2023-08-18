@@ -77,4 +77,19 @@ final class RemoteDataService: IRemoteDataService {
 			}
 		}
 	}
+
+	/// Метод сервиса, который отвечает за загрузку Эпизода
+	/// - Parameters:
+	///   - url: Ссылка
+	///   - completion: Обработчик завершения
+	public func loadEpisode(by url: String, completion: @escaping (Result<Episode, Error>) -> Void) {
+		networkService.sendRequest(path: url, needDecoding: true) { (result: Result<Episode, Error>) in
+			switch result {
+			case .success(let episode):
+				completion(.success(episode))
+			case .failure(let error):
+				completion(.failure(error))
+			}
+		}
+	}
 }

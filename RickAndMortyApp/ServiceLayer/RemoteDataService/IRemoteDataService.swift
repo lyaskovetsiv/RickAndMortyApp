@@ -12,4 +12,5 @@ protocol IRemoteDataService: AnyObject {
 	func loadCharacters(completion: @escaping (Result<ServerResponse, Error>) -> Void)
 	func loadImage(from stringUrl: String, completion: @escaping (Result<ImageModel, Error>) -> Void)
 	func loadPlace(by url: String, completion: @escaping (Result<Place, Error>) -> Void)
+	func loadEpisode(by url: String, completion: @escaping (Result<Episode, Error>) -> Void)
 }
