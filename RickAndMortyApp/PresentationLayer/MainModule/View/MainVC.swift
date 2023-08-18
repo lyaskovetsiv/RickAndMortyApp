@@ -102,7 +102,6 @@ extension MainVC: UICollectionViewDataSource {
 		}
 		let character = presenter.getCharacter(by: indexPath)
 		cell.configure(with: character)
-		loadImageFor(cell: cell, character: character)
 		return cell
 	}
 }
@@ -112,6 +111,14 @@ extension MainVC: UICollectionViewDataSource {
 extension MainVC: UICollectionViewDelegate {
 	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 		presenter.characterTapped(indexPath: indexPath)
+	}
+
+	func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+		guard let cell = cell as? CharacterCell else {
+			fatalError("Failed to load CharacterCell")
+		}
+		let character = presenter.getCharacter(by: indexPath)
+		loadImageFor(cell: cell, character: character)
 	}
 }
 
