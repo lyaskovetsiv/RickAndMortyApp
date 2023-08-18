@@ -16,3 +16,6 @@ RickAndMortyApp предоставляет пользователю возмож
 4. В качестве архитектурных паттернов были взяты (MVP - для экрана с UIKit, и MVVM - для экрана с SwiftUI).
 5. Для работы с сетью использовалась URLSession.
 
+
+https://github.com/lyaskovetsiv/RickAndMortyApp/assets/100786077/3829f3e6-f7d8-4189-8311-f4f2cc65f92d
+
