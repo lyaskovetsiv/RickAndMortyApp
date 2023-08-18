@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct EpisodesView: View {
-
 	// MARK: - States&Properties
 
 	private var character: Character

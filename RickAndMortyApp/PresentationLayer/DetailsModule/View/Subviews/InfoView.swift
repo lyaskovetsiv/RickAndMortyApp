@@ -8,12 +8,17 @@
 import SwiftUI
 
 struct InfoView: View {
+	// MARK: - States&Properties
 
 	private var character: Character
+
+	// MARK: - Init
 
 	init(character: Character) {
 		self.character = character
 	}
+
+	// MARK: - UI
 
 	var body: some View {
 		VStack {

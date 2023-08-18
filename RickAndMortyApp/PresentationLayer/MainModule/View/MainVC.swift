@@ -42,6 +42,7 @@ extension MainVC {
 		title = "Characters"
 		view.backgroundColor = #colorLiteral(red: 0.01332889963, green: 0.04810451716, blue: 0.1187042817, alpha: 1)
 		navigationController?.navigationBar.prefersLargeTitles = true
+		navigationItem.backButtonTitle = ""
 		mainCollectionView.dataSource = self
 		mainCollectionView.delegate = self
 		view.addSubview(mainCollectionView)

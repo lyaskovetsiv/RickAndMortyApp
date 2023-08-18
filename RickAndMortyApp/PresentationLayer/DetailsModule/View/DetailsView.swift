@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct DetailsView: View {
-
 	// MARK: - States&Properties
 
 	private var character: Character
@@ -20,31 +19,12 @@ struct DetailsView: View {
 	}
 
 	// MARK: - UI
+
 	var body: some View {
 		ZStack {
 			Color.backgroundColor
 			VStack {
-				AsyncImage(url: URL(string: character.image ?? "")) { phase in
-					if let image = phase.image {
-						image
-							.resizable()
-							.scaledToFit()
-					} else if phase.error != nil {
-						Text("There was an error loading image.")
-					} else {
-						ProgressView()
-					}
-				}
-				.frame(width: 148, height: 148)
-				.clipShape(RoundedRectangle(cornerRadius: 16))
-				VStack (spacing: 8) {
-					Text("\(character.name)")
-						.font(Font.custom("Gilroy-ExtraBold", fixedSize: 22))
-					Text("\(character.status)")
-						.font(Font.custom("Gilroy-Light", size: 16))
-						.foregroundColor(Color.greenFuxia)
-				}
-				.padding()
+				HeaderView(character: character)
 				InfoView(character: character)
 				OriginView(character: character)
 				EpisodesView(character: character)
@@ -52,6 +32,8 @@ struct DetailsView: View {
 			.padding(.top, 100)
 		}
 		.ignoresSafeArea()
+		.navigationBarBackButtonHidden(true)
+		.navigationBarItems(leading: NavigationBackCustomButton())
 	}
 }
 

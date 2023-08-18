@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct OriginView: View {
-
 	// MARK: - States&Properties
 
 	private var character: Character
