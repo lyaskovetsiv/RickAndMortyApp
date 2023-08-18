@@ -35,7 +35,7 @@ struct EpisodesView: View {
 							}
 							.padding(16)
 							HStack {
-								Text("TEST")
+								Text("Episode: \(episode.ep), Season: \(episode.season)")
 									.font(Font.custom("Gilroy-Medium", size: 13))
 									.foregroundColor(Color.greenFuxia)
 								Spacer()

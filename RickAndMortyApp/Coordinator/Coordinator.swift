@@ -40,6 +40,7 @@ final class Coordinator: ModuleOutput {
 	public func wantToOpenDetailsModule(character: Character) {
 		let vc = ModuleAssembly.createDetailesModule(character: character, coordinator: self)
 		let host = UIHostingController(rootView: vc)
+		host.navigationItem.hidesBackButton = true
 		self.navigationController.pushViewController(host, animated: true)
 	}
 
