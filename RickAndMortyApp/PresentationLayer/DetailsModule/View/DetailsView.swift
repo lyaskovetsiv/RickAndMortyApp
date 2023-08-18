@@ -21,19 +21,23 @@ struct DetailsView: View {
 	// MARK: - UI
 
 	var body: some View {
-		ZStack {
-			Color.backgroundColor
-			VStack {
-				HeaderView(character: character)
-				InfoView(character: character)
-				OriginView(character: character)
-				EpisodesView(character: character)
+		ScrollView(showsIndicators: false) {
+			ZStack {
+				Color.backgroundColor
+				VStack {
+					HeaderView(character: character)
+					InfoView(character: character)
+					OriginView(character: character)
+					EpisodesView(character: character)
+				}
+				.padding(.top, 100)
 			}
-			.padding(.top, 100)
+
+			.navigationBarBackButtonHidden(true)
+			.navigationBarItems(leading: NavigationBackCustomButton())
 		}
+
 		.ignoresSafeArea()
-		.navigationBarBackButtonHidden(true)
-		.navigationBarItems(leading: NavigationBackCustomButton())
 	}
 }
 
