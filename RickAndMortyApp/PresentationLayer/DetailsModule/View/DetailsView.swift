@@ -11,7 +11,7 @@ struct DetailsView: View {
 
 	// MARK: - States&Properties
 
-	@State private var character: Character
+	private var character: Character
 
 	// MARK: - Init
 
@@ -24,9 +24,19 @@ struct DetailsView: View {
 		ZStack {
 			Color.backgroundColor
 			VStack {
-				AsyncImage(url: URL(string: character.image ?? ""))
-					.frame(width: 148, height: 148)
-					.clipShape(RoundedRectangle(cornerRadius: 16))
+				AsyncImage(url: URL(string: character.image ?? "")) { phase in
+					if let image = phase.image {
+						image
+							.resizable()
+							.scaledToFit()
+					} else if phase.error != nil {
+						Text("There was an error loading image.")
+					} else {
+						ProgressView()
+					}
+				}
+				.frame(width: 148, height: 148)
+				.clipShape(RoundedRectangle(cornerRadius: 16))
 				VStack (spacing: 8) {
 					Text("\(character.name)")
 						.font(Font.custom("Gilroy-ExtraBold", fixedSize: 22))
@@ -36,7 +46,10 @@ struct DetailsView: View {
 				}
 				.padding()
 				InfoView(character: character)
+				OriginView(character: character)
+				EpisodesView(character: character)
 			}
+			.padding(.top, 100)
 		}
 		.ignoresSafeArea()
 	}
@@ -45,11 +58,10 @@ struct DetailsView: View {
 // MARK: - Preview
 
 struct DetailsView_Previews: PreviewProvider {
+	static var character = Character(name: "Rick Sanchez", status: "Alive",
+									 species: "Human", type: "None", gender: "Male",
+									 origin: Origin(name: "Earth", url: "https://rickandmortyapi.com/api/location/1"))
 	static var previews: some View {
-		DetailsView(character: Character(name: "Rick Sanchez",
-										 status: "Alive",
-										 species: "Human",
-										 type: "None",
-										 gender: "Male"))
+		DetailsView(character: character)
 	}
 }

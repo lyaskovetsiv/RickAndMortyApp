@@ -15,5 +15,11 @@ struct Character: Codable {
 	var species: String
 	var type: String
 	var gender: String
+	var origin: Origin
+}
+
+struct Origin: Codable {
+	var name: String
+	var url: String
 }
 
