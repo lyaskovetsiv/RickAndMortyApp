@@ -10,23 +10,19 @@ import SwiftUI
 struct OriginView: View {
 	// MARK: - States&Properties
 
-	private var character: Character
+	@ObservedObject var viewModel: DetailsViewModel
 
 	// MARK: - Init
 
-	init(character: Character) {
-		self.character = character
+	init(viewModel: DetailsViewModel) {
+		self.viewModel = viewModel
 	}
 
 	// MARK: - UI
 
 	var body: some View {
 		VStack(spacing: 0) {
-			HStack {
-				Text("Origin")
-				Spacer()
-			}
-			.padding(.leading, 24)
+			SectionHeader(text: "Origin")
 			ZStack {
 				Color.groupColor
 				HStack {
@@ -41,11 +37,10 @@ struct OriginView: View {
 					.cornerRadius(10)
 					.padding(8)
 					VStack (alignment: .leading, spacing: 8) {
-						Text(character.origin.name)
-							.font(Font.custom("Gilroy-ExtraBold", fixedSize: 17))
-						#warning("Нужен запрос в сеть и модель для локации")
-						Text("Planet")
-							.font(Font.custom("Gilroy-Light", size: 13))
+						Text(viewModel.place?.name ?? "")
+							.font(Font.custom("Gilroy-Semibold", fixedSize: 17))
+						Text(viewModel.place?.type ?? "")
+							.font(Font.custom("Gilroy-Medium", size: 13))
 							.foregroundColor(Color.greenFuxia)
 					}
 					Spacer()

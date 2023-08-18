@@ -14,15 +14,18 @@ final class MainPresenter: IMainPresenter {
 
 	// MARK: - Private properties
 
+	private var moduleOutput: ModuleOutput
 	private var remoteDataService: IRemoteDataService
 	private var characters: [Character] = []
 
 	// MARK: - Init
 
 	init(view: IMainView? = nil,
-		 remoteDataService: IRemoteDataService) {
+		 remoteDataService: IRemoteDataService,
+		 moduleOutput: ModuleOutput) {
 		self.view = view
 		self.remoteDataService = remoteDataService
+		self.moduleOutput = moduleOutput
 	}
 
 	// MARK: - Public methods
@@ -73,5 +76,12 @@ final class MainPresenter: IMainPresenter {
 				print(error)
 			}
 		}
+	}
+
+	/// Метод презентера, обрабатывающий нажатие на иконку с персонажем
+	/// - Parameter indexPath: Индекс ячейки с персонажем
+	public func characterTapped(indexPath: IndexPath) {
+		let character = characters[indexPath.item]
+		moduleOutput.wantToOpenDetailsModule(character: character)
 	}
 }

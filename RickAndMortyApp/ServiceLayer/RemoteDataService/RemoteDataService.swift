@@ -62,4 +62,19 @@ final class RemoteDataService: IRemoteDataService {
 			}
 		}
 	}
+
+	/// Метод сервиса, который отвечает за загрузку Place
+	/// - Parameters:
+	///   - url: Ссылка
+	///   - completion: Обработчик завершения
+	public func loadPlace(by url: String, completion: @escaping (Result<Place, Error>) -> Void) {
+		networkService.sendRequest(path: url, needDecoding: true) { (result: Result<Place, Error>) in
+			switch result {
+			case .success(let place):
+				completion(.success(place))
+			case .failure(let error):
+				completion(.failure(error))
+			}
+		}
+	}
 }

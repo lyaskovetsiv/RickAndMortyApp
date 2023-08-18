@@ -9,5 +9,5 @@ import Foundation
 
 /// Модель серверного ответа
 struct ServerResponse: Codable {
-	var results: [Character]
+	let results: [Character]
 }

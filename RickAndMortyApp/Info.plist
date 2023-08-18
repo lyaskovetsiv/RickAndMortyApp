@@ -8,6 +8,8 @@
 	<array>
 		<string>Gilroy-Light.otf</string>
 		<string>Gilroy-ExtraBold.otf</string>
+		<string>Gilroy-Medium.ttf</string>
+		<string>Gilroy-Semibold.ttf</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>

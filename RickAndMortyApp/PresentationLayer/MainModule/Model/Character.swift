@@ -9,17 +9,18 @@ import Foundation
 
 /// Модель персонажа
 struct Character: Codable {
-	var name: String
-	var image: String?
-	var status: String
-	var species: String
-	var type: String
-	var gender: String
-	var origin: Origin
+	let name: String
+	let image: String?
+	let status: String
+	let species: String
+	let type: String
+	let gender: String
+	let origin: Origin
+	let episode: [String]
 }
 
 struct Origin: Codable {
-	var name: String
-	var url: String
+	let name: String
+	let url: String
 }
 

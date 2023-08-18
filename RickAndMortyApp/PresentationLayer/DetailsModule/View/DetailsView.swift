@@ -9,13 +9,12 @@ import SwiftUI
 
 struct DetailsView: View {
 	// MARK: - States&Properties
-
-	private var character: Character
+	@ObservedObject var viewModel: DetailsViewModel
 
 	// MARK: - Init
 
-	init(character: Character) {
-		self.character = character
+	init(viewModel: DetailsViewModel) {
+		self.viewModel = viewModel
 	}
 
 	// MARK: - UI
@@ -25,29 +24,21 @@ struct DetailsView: View {
 			ZStack {
 				Color.backgroundColor
 				VStack {
-					HeaderView(character: character)
-					InfoView(character: character)
-					OriginView(character: character)
-					EpisodesView(character: character)
+					HeaderView(viewModel: viewModel)
+					InfoView(viewModel: viewModel)
+					OriginView(viewModel: viewModel)
+					EpisodesView(character: viewModel.character)
 				}
 				.padding(.top, 100)
 			}
-
 			.navigationBarBackButtonHidden(true)
 			.navigationBarItems(leading: NavigationBackCustomButton())
 		}
-
 		.ignoresSafeArea()
-	}
-}
-
-// MARK: - Preview
-
-struct DetailsView_Previews: PreviewProvider {
-	static var character = Character(name: "Rick Sanchez", status: "Alive",
-									 species: "Human", type: "None", gender: "Male",
-									 origin: Origin(name: "Earth", url: "https://rickandmortyapi.com/api/location/1"))
-	static var previews: some View {
-		DetailsView(character: character)
+		.onAppear {
+			Task {
+				viewModel.loadPlace()
+			}
+		}
 	}
 }

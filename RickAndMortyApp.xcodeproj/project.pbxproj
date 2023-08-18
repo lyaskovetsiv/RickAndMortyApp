@@ -34,6 +34,13 @@
 		A0296D202A8F4BD2008360A5 /* EpisodesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0296D1F2A8F4BD2008360A5 /* EpisodesView.swift */; };
 		A0296D222A8F4D9F008360A5 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0296D212A8F4D9F008360A5 /* HeaderView.swift */; };
 		A0296D242A8F4EA8008360A5 /* NavigationBackCustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0296D232A8F4EA8008360A5 /* NavigationBackCustomButton.swift */; };
+		A0296D2B2A8F6BFC008360A5 /* Gilroy-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A0296D2A2A8F6BFC008360A5 /* Gilroy-Medium.ttf */; };
+		A0296D2D2A8F7D60008360A5 /* Gilroy-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A0296D2C2A8F7D60008360A5 /* Gilroy-Semibold.ttf */; };
+		A0296D2F2A8F7E00008360A5 /* SectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0296D2E2A8F7E00008360A5 /* SectionHeader.swift */; };
+		A0296D312A8F8048008360A5 /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0296D302A8F8048008360A5 /* Episode.swift */; };
+		A0296D342A8F8248008360A5 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0296D332A8F8248008360A5 /* Place.swift */; };
+		A0296D362A8F87FD008360A5 /* DetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0296D352A8F87FD008360A5 /* DetailsViewModel.swift */; };
+		A0296D392A8F8DBE008360A5 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0296D382A8F8DBE008360A5 /* Coordinator.swift */; };
 		A057985E2A8EA053008E819D /* DetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A057985D2A8EA053008E819D /* DetailsView.swift */; };
 		A05798612A8EA463008E819D /* Color+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05798602A8EA463008E819D /* Color+extension.swift */; };
 		A05798642A8ECBFE008E819D /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05798632A8ECBFE008E819D /* InfoView.swift */; };
@@ -69,6 +76,13 @@
 		A0296D1F2A8F4BD2008360A5 /* EpisodesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodesView.swift; sourceTree = "<group>"; };
 		A0296D212A8F4D9F008360A5 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		A0296D232A8F4EA8008360A5 /* NavigationBackCustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBackCustomButton.swift; sourceTree = "<group>"; };
+		A0296D2A2A8F6BFC008360A5 /* Gilroy-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-Medium.ttf"; sourceTree = "<group>"; };
+		A0296D2C2A8F7D60008360A5 /* Gilroy-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-Semibold.ttf"; sourceTree = "<group>"; };
+		A0296D2E2A8F7E00008360A5 /* SectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeader.swift; sourceTree = "<group>"; };
+		A0296D302A8F8048008360A5 /* Episode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Episode.swift; sourceTree = "<group>"; };
+		A0296D332A8F8248008360A5 /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
+		A0296D352A8F87FD008360A5 /* DetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewModel.swift; sourceTree = "<group>"; };
+		A0296D382A8F8DBE008360A5 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		A057985D2A8EA053008E819D /* DetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsView.swift; sourceTree = "<group>"; };
 		A05798602A8EA463008E819D /* Color+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+extension.swift"; sourceTree = "<group>"; };
 		A05798632A8ECBFE008E819D /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
@@ -88,6 +102,7 @@
 		A00C3B362A8E564A0003EAA5 = {
 			isa = PBXGroup;
 			children = (
+				A0296D382A8F8DBE008360A5 /* Coordinator.swift */,
 				A00C3B412A8E564A0003EAA5 /* RickAndMortyApp */,
 				A00C3B402A8E564A0003EAA5 /* Products */,
 			);
@@ -147,6 +162,8 @@
 		A00C3B5B2A8E5FBD0003EAA5 /* DetailsModule */ = {
 			isa = PBXGroup;
 			children = (
+				A0296D372A8F8802008360A5 /* ViewModel */,
+				A0296D322A8F80F5008360A5 /* Model */,
 				A057985F2A8EA058008E819D /* View */,
 			);
 			path = DetailsModule;
@@ -255,6 +272,8 @@
 			isa = PBXGroup;
 			children = (
 				A00C3B842A8E87940003EAA5 /* Gilroy-Light.otf */,
+				A0296D2A2A8F6BFC008360A5 /* Gilroy-Medium.ttf */,
+				A0296D2C2A8F7D60008360A5 /* Gilroy-Semibold.ttf */,
 				A00C3B862A8E88750003EAA5 /* Gilroy-ExtraBold.otf */,
 			);
 			path = Fonts;
@@ -292,9 +311,27 @@
 		A0296D252A8F4FF2008360A5 /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				A0296D2E2A8F7E00008360A5 /* SectionHeader.swift */,
 				A0296D232A8F4EA8008360A5 /* NavigationBackCustomButton.swift */,
 			);
 			path = Other;
+			sourceTree = "<group>";
+		};
+		A0296D322A8F80F5008360A5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A0296D302A8F8048008360A5 /* Episode.swift */,
+				A0296D332A8F8248008360A5 /* Place.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A0296D372A8F8802008360A5 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				A0296D352A8F87FD008360A5 /* DetailsViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		A057985F2A8EA058008E819D /* View */ = {
@@ -374,7 +411,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				A00C3B4F2A8E564B0003EAA5 /* LaunchScreen.storyboard in Resources */,
+				A0296D2B2A8F6BFC008360A5 /* Gilroy-Medium.ttf in Resources */,
 				A00C3B4C2A8E564B0003EAA5 /* Assets.xcassets in Resources */,
+				A0296D2D2A8F7D60008360A5 /* Gilroy-Semibold.ttf in Resources */,
 				A00C3B852A8E87940003EAA5 /* Gilroy-Light.otf in Resources */,
 				A00C3B872A8E88750003EAA5 /* Gilroy-ExtraBold.otf in Resources */,
 			);
@@ -388,18 +427,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				A00C3B802A8E84180003EAA5 /* IReusableCell.swift in Sources */,
+				A0296D342A8F8248008360A5 /* Place.swift in Sources */,
 				A057985E2A8EA053008E819D /* DetailsView.swift in Sources */,
 				A00C3B902A8E97B90003EAA5 /* ImageModel.swift in Sources */,
 				A00C3B5D2A8E62AF0003EAA5 /* CharacterCell.swift in Sources */,
 				A00C3B612A8E69200003EAA5 /* MainPresenter.swift in Sources */,
+				A0296D2F2A8F7E00008360A5 /* SectionHeader.swift in Sources */,
 				A00C3B472A8E564A0003EAA5 /* MainVC.swift in Sources */,
 				A00C3B8A2A8E8D690003EAA5 /* NetworkService.swift in Sources */,
 				A00C3B7E2A8E836E0003EAA5 /* IConfurableCell.swift in Sources */,
+				A0296D312A8F8048008360A5 /* Episode.swift in Sources */,
 				A00C3B742A8E6D010003EAA5 /* ServerResponse.swift in Sources */,
 				A00C3B662A8E69910003EAA5 /* IMainView.swift in Sources */,
 				A0296D242A8F4EA8008360A5 /* NavigationBackCustomButton.swift in Sources */,
 				A0296D1E2A8F4785008360A5 /* OriginView.swift in Sources */,
 				A00C3B692A8E6A2B0003EAA5 /* ModuleAssembly.swift in Sources */,
+				A0296D362A8F87FD008360A5 /* DetailsViewModel.swift in Sources */,
 				A0296D202A8F4BD2008360A5 /* EpisodesView.swift in Sources */,
 				A00C3B702A8E6B450003EAA5 /* IRemoteDataService.swift in Sources */,
 				A05798642A8ECBFE008E819D /* InfoView.swift in Sources */,
@@ -407,6 +450,7 @@
 				A00C3B432A8E564A0003EAA5 /* AppDelegate.swift in Sources */,
 				A00C3B642A8E69390003EAA5 /* IMainPresenter.swift in Sources */,
 				A00C3B792A8E6EF30003EAA5 /* NetworkError.swift in Sources */,
+				A0296D392A8F8DBE008360A5 /* Coordinator.swift in Sources */,
 				A00C3B762A8E6D200003EAA5 /* Character.swift in Sources */,
 				A05798612A8EA463008E819D /* Color+extension.swift in Sources */,
 				A00C3B6C2A8E6B140003EAA5 /* RemoteDataService.swift in Sources */,

@@ -10,19 +10,19 @@ import SwiftUI
 struct HeaderView: View {
 	// MARK: - States&Properties
 
-	private var character: Character
+	@ObservedObject var viewModel: DetailsViewModel
 
 	// MARK: - Init
 
-	init(character: Character) {
-		self.character = character
+	init(viewModel: DetailsViewModel) {
+		self.viewModel = viewModel
 	}
 
 	// MARK: - UI
 
     var body: some View {
 		VStack {
-			AsyncImage(url: URL(string: character.image ?? "")) { phase in
+			AsyncImage(url: URL(string: viewModel.character.image ?? "")) { phase in
 				if let image = phase.image {
 					image
 						.resizable()
@@ -36,10 +36,10 @@ struct HeaderView: View {
 			.frame(width: 148, height: 148)
 			.clipShape(RoundedRectangle(cornerRadius: 16))
 			VStack (spacing: 8) {
-				Text("\(character.name)")
-					.font(Font.custom("Gilroy-ExtraBold", fixedSize: 22))
-				Text("\(character.status)")
-					.font(Font.custom("Gilroy-Light", size: 16))
+				Text("\(viewModel.character.name)")
+					.font(Font.custom("Gilroy-Semibold", size: 22))
+				Text("\(viewModel.character.status)")
+					.font(Font.custom("Gilroy-Medium", size: 16))
 					.foregroundColor(Color.greenFuxia)
 			}
 			.padding()

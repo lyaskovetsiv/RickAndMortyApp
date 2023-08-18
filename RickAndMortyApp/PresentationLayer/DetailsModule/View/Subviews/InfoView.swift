@@ -10,45 +10,47 @@ import SwiftUI
 struct InfoView: View {
 	// MARK: - States&Properties
 
-	private var character: Character
+	@ObservedObject var viewModel: DetailsViewModel
 
 	// MARK: - Init
 
-	init(character: Character) {
-		self.character = character
+	init(viewModel: DetailsViewModel) {
+		self.viewModel = viewModel
 	}
 
 	// MARK: - UI
 
 	var body: some View {
 		VStack {
-			HStack {
-				Text("Info")
-				Spacer()
-			}
-			.padding(.leading, 24)
+			SectionHeader(text: "Info")
 			ZStack {
 				Color.groupColor
 				VStack (spacing: -8) {
 					HStack {
 						Text("Species: ")
+							.font(Font.custom("Gilroy-Semibold", size: 16))
 							.foregroundColor(Color.secondaryTextColor)
 						Spacer()
-						Text("\(character.species)")
+						Text("\(viewModel.character.species)")
+							.font(Font.custom("Gilroy-Semibold", size: 16))
 					}
 					.padding(16)
 					HStack {
 						Text("Type: ")
+							.font(Font.custom("Gilroy-Semibold", size: 16))
 							.foregroundColor(Color.secondaryTextColor)
 						Spacer()
-						Text(character.type == "" ? "None" : "\(character.type)")
+						Text(viewModel.character.type == "" ? "None" : "\(viewModel.character.type)")
+							.font(Font.custom("Gilroy-Semibold", size: 16))
 					}
 					.padding(16)
 					HStack {
 						Text("Gender: ")
+							.font(Font.custom("Gilroy-Semibold", size: 16))
 							.foregroundColor(Color.secondaryTextColor)
 						Spacer()
-						Text("\(character.gender)")
+						Text("\(viewModel.character.gender)")
+							.font(Font.custom("Gilroy-Semibold", size: 16))
 					}
 					.padding(16)
 				}

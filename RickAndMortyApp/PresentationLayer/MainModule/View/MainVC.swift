@@ -111,9 +111,7 @@ extension MainVC: UICollectionViewDataSource {
 
 extension MainVC: UICollectionViewDelegate {
 	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-		let character = presenter.getCharacter(by: indexPath)
-		let host = UIHostingController(rootView: DetailsView(character: character))
-		navigationController?.pushViewController(host, animated: true)
+		presenter.characterTapped(indexPath: indexPath)
 	}
 }
 
