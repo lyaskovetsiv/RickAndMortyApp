@@ -9,20 +9,33 @@ import UIKit
 
 /// Класс ячейки коллекции с персонажами
 final class CharacterCell: UICollectionViewCell {
+	// MARK: - Private constants
+
+	private enum Constants {
+		// Fonts
+		static let nameLabelFont: UIFont? = UIFont(name: "Gilroy-ExtraBold", size: 16)
+		// Colors
+		static let nameLabelTintColor: UIColor = .white
+		static let backgroundColor: UIColor = #colorLiteral(red: 0.1501607001, green: 0.1651832163, blue: 0.2201651633, alpha: 1)
+		static let photoImageViewHeight: CGFloat = 140
+		// Sizes
+		static let cellCornerRadius: CGFloat = 16
+		static let photoImageViewCornerRadius: CGFloat = 10
+	}
 
 	// MARK: - Private properties
 
 	private var photoImageView: UIImageView = {
 		let view = UIImageView(frame: .zero)
-		view.layer.cornerRadius = 10
+		view.layer.cornerRadius = Constants.photoImageViewCornerRadius
 		view.clipsToBounds = true
 		return view
 	}()
 
 	private var nameLabel: UILabel = {
 		let view = UILabel(frame: .zero)
-		view.tintColor = .white
-		view.font = UIFont(name: "Gilroy-ExtraBold", size: 16)
+		view.tintColor = Constants.nameLabelTintColor
+		view.font = Constants.nameLabelFont
 		view.textAlignment = .center
 		view.numberOfLines = 1
 		return view
@@ -63,8 +76,8 @@ final class CharacterCell: UICollectionViewCell {
 
 extension CharacterCell {
 	private func setupView() {
-		backgroundColor = #colorLiteral(red: 0.1501607001, green: 0.1651832163, blue: 0.2201651633, alpha: 1)
-		layer.cornerRadius = 16
+		backgroundColor = Constants.backgroundColor
+		layer.cornerRadius = Constants.cellCornerRadius
 		addSubview(photoImageView)
 		photoImageView.addSubview(activityIndicator)
 		addSubview(nameLabel)
@@ -77,7 +90,7 @@ extension CharacterCell {
 			photoImageView.topAnchor.constraint(equalTo: topAnchor, constant: 8),
 			photoImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
 			photoImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
-			photoImageView.heightAnchor.constraint(equalToConstant: 140)
+			photoImageView.heightAnchor.constraint(equalToConstant: Constants.photoImageViewHeight)
 		])
 
 		nameLabel.translatesAutoresizingMaskIntoConstraints = false

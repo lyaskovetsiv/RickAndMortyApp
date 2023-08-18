@@ -19,6 +19,11 @@ final class DetailsViewModel: ObservableObject {
 
 	// MARK: - Init
 
+	/// Инициализатор вьюмодели Details модуля
+	/// - Parameters:
+	///   - character: Модель персонажа
+	///   - remoteDataService: Сервис для работы с сервером
+	///   - moduleOutput: Координатор
 	init(character: Character, remoteDataService: IRemoteDataService, moduleOutput: ModuleOutput) {
 		self.character = character
 		self.remoteDataService = remoteDataService

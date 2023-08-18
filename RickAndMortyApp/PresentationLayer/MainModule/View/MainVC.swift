@@ -13,6 +13,12 @@ final class MainVC: UIViewController {
 
 	var presenter: IMainPresenter!
 
+	// MARK: - Private constants
+
+	private enum Constants {
+		static let backgroundColor: UIColor = #colorLiteral(red: 0.01332889963, green: 0.04810451716, blue: 0.1187042817, alpha: 1)
+	}
+
 	// MARK: - Private properties
 
 	private var mainCollectionView: UICollectionView = {
@@ -40,7 +46,7 @@ final class MainVC: UIViewController {
 extension MainVC {
 	private func setupView() {
 		title = "Characters"
-		view.backgroundColor = #colorLiteral(red: 0.01332889963, green: 0.04810451716, blue: 0.1187042817, alpha: 1)
+		view.backgroundColor = Constants.backgroundColor
 		navigationController?.navigationBar.prefersLargeTitles = true
 		navigationItem.backButtonTitle = ""
 		mainCollectionView.dataSource = self

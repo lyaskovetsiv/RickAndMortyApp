@@ -12,6 +12,8 @@ struct NavigationBackCustomButton: View {
 
 	@Environment(\.presentationMode) var presentationMode
 
+	// MARK: - UI
+
 	var body: some View {
 		Button(action: {
 			presentationMode.wrappedValue.dismiss()
