@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Модель эпизода
 struct Episode: Codable {
 	let name: String
 	let air_date: String
@@ -27,5 +28,4 @@ struct Episode: Codable {
 		}
 		return String(result)
 	}
-
 }

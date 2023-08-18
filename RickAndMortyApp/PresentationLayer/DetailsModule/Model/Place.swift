@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Модель места
 struct Place: Codable {
 	let name: String
 	let type: String

@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 /// Вью модель Details модуля
 final class DetailsViewModel: ObservableObject {
 	// MARK: - States&Properties
