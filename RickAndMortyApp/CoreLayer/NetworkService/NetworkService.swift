@@ -64,7 +64,7 @@ final class NetworkService: INetworkService {
 	///   - completion: Паблишер типа AnyPublisher<T, Error>
 	public func sendRequest<T:Decodable>(path: String, needDecoding: Bool) -> AnyPublisher<T, Error> {
 		guard let url = URL(string: path) else {
-			fatalError("Invalid Url!")
+			return Fail(error: NetworkError.badUrl).eraseToAnyPublisher()
 		}
 		var urlRequest = URLRequest(url: url)
 		urlRequest.httpMethod = "GET"

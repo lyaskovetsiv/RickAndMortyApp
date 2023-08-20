@@ -37,9 +37,9 @@ struct OriginView: View {
 					.cornerRadius(10)
 					.padding(8)
 					VStack (alignment: .leading, spacing: 8) {
-						Text(viewModel.place?.name ?? "")
+						Text(viewModel.place.name)
 							.font(Font.custom("Gilroy-Semibold", fixedSize: 17))
-						Text(viewModel.place?.type ?? "")
+						Text(viewModel.place.type)
 							.font(Font.custom("Gilroy-Medium", size: 13))
 							.foregroundColor(Color.greenFuxia)
 					}

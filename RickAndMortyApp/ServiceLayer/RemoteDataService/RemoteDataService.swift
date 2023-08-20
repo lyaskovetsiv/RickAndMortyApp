@@ -16,6 +16,7 @@ final class RemoteDataService: IRemoteDataService {
 	private var networkService: INetworkService
 	private var imageCache = NSCache<NSString, UIImage>()
 	private var path = "https://rickandmortyapi.com/api/character"
+	private var cancellables: Set<AnyCancellable> = []
 
 	// MARK: - Inits
 
@@ -31,13 +32,28 @@ final class RemoteDataService: IRemoteDataService {
 		networkService.sendRequest(path: path, needDecoding: true)
 	}
 
+	/// Метод сервиса, который отвечает за загрузку Place
+	/// - Parameters:
+	///   - url: Ссылка
+	///   - completion: Паблишер типа AnyPublisher<Place,Error>
+	public func loadPlace(by url: String) -> AnyPublisher<Place,Error> {
+		networkService.sendRequest(path: url, needDecoding: true)
+	}
+
+	/// Метод сервиса, который отвечает за загрузку Эпизода
+	/// - Parameter url: Ссылка
+	/// - Returns: Паблишер типа AnyPublisher<Episode,Error>
+	public func loadEpisode(by url: String) -> AnyPublisher<Episode,Error> {
+		networkService.sendRequest(path: url, needDecoding: true)
+	}
+
 	/// Метод сервиса, который отвечает за загрузку картинок
 	/// - Parameter stringUrl: Ccskrf yf rfhnbyre
 	/// - Returns: Паблишер типа AnyPublisher<ImageModel, Error>
 	public func loadImage(from stringUrl: String) -> AnyPublisher<ImageModel, Error> {
 		if let cachedImage = imageCache.object(forKey: NSString(string: stringUrl)) {
 			let model = ImageModel(image: cachedImage)
-			return Result.Publisher(.success(model)).eraseToAnyPublisher()
+			return Just(model).setFailureType(to: Error.self).eraseToAnyPublisher()
 		} else {
 			return Future { [weak self] promise in
 				DispatchQueue.global().asyncAfter(deadline: .now() + 1.0) {
@@ -59,36 +75,6 @@ final class RemoteDataService: IRemoteDataService {
 				}
 			}
 			.eraseToAnyPublisher()
-		}
-	}
-
-	/// Метод сервиса, который отвечает за загрузку Place
-	/// - Parameters:
-	///   - url: Ссылка
-	///   - completion: Обработчик завершения
-	public func loadPlace(by url: String, completion: @escaping (Result<Place, Error>) -> Void) {
-		networkService.sendRequest(path: url, needDecoding: true) { (result: Result<Place, Error>) in
-			switch result {
-			case .success(let place):
-				completion(.success(place))
-			case .failure(let error):
-				completion(.failure(error))
-			}
-		}
-	}
-
-	/// Метод сервиса, который отвечает за загрузку Эпизода
-	/// - Parameters:
-	///   - url: Ссылка
-	///   - completion: Обработчик завершения
-	public func loadEpisode(by url: String, completion: @escaping (Result<Episode, Error>) -> Void) {
-		networkService.sendRequest(path: url, needDecoding: true) { (result: Result<Episode, Error>) in
-			switch result {
-			case .success(let episode):
-				completion(.success(episode))
-			case .failure(let error):
-				completion(.failure(error))
-			}
 		}
 	}
 }

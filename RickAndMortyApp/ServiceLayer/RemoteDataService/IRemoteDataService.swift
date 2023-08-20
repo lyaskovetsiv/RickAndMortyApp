@@ -12,6 +12,6 @@ import Foundation
 protocol IRemoteDataService: AnyObject {
 	func loadCharacters() -> AnyPublisher<ServerResponse, Error>
 	func loadImage(from stringUrl: String) -> AnyPublisher<ImageModel, Error>
-	func loadPlace(by url: String, completion: @escaping (Result<Place, Error>) -> Void)
-	func loadEpisode(by url: String, completion: @escaping (Result<Episode, Error>) -> Void)
+	func loadPlace(by url: String) -> AnyPublisher<Place,Error>
+	func loadEpisode(by url: String) -> AnyPublisher<Episode,Error>
 }

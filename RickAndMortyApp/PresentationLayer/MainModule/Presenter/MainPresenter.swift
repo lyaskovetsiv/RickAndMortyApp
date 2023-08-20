@@ -61,6 +61,7 @@ final class MainPresenter: IMainPresenter {
 	public func getCharacter(by indexPath: IndexPath) -> Character {
 		return characters[indexPath.item]
 	}
+
 	/// Метод презентера, выполняющий загрузку картинки для персонажа
 	/// - Parameters:
 	///   - url: Адрес картинки
@@ -69,7 +70,7 @@ final class MainPresenter: IMainPresenter {
 		remoteDataService.loadImage(from: url)
 			.subscribe(on: DispatchQueue.global(qos: .userInitiated))
 			.receive(on: DispatchQueue.main)
-			.sink { [weak self] completion in
+			.sink { completion in
 				if case let .failure(error) = completion {
 					print(error.localizedDescription)
 				}
