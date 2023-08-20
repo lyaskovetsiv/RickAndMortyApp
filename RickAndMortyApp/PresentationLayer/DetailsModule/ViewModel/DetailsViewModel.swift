@@ -15,6 +15,8 @@ final class DetailsViewModel: ObservableObject {
 	@Published var character: Character
 	@Published var place: Place = Place(name: "", type: "")
 	@Published var episodes: [Episode] = []
+	@Published var errorMessage = ""
+	@Published var showingError: Bool = false
 	private var remoteDataService: IRemoteDataService
 	private var moduleOutput: ModuleOutput
 	private var cancellables = Set<AnyCancellable>()
@@ -39,8 +41,15 @@ final class DetailsViewModel: ObservableObject {
 		remoteDataService.loadPlace(by: character.origin.url)
 			.subscribe(on: DispatchQueue.global(qos: .userInitiated))
 			.receive(on: DispatchQueue.main)
-			.catch { _ in Just(self.place) }
-			.assign(to: \.place , on: self)
+			.sink(receiveCompletion: { [weak self] completion in
+				if case let .failure(error) = completion {
+					print(error.localizedDescription)
+					self?.errorMessage = "Missed data from server: place"
+					self?.showingError = true
+				}
+			}, receiveValue: { [weak self] place in
+				self?.place = place
+			})
 			.store(in: &cancellables)
 	}
 
@@ -50,9 +59,11 @@ final class DetailsViewModel: ObservableObject {
 			remoteDataService.loadEpisode(by: episode)
 				.subscribe(on: DispatchQueue.global(qos: .userInitiated))
 				.receive(on: DispatchQueue.main)
-				.sink { completion in
+				.sink { [weak self] completion in
 					if case let .failure(error) = completion {
 						print(error.localizedDescription)
+						self?.errorMessage = "Missed data from server: episodes"
+						self?.showingError = true
 					}
 				} receiveValue: { [weak self] episode in
 					self?.episodes.append(episode)
