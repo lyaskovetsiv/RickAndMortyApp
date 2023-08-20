@@ -101,6 +101,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A00569162A9275BA00D5011A /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				A00C3B8B2A8E8DEE0003EAA5 /* INetworkService.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		A00569172A9275CB00D5011A /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				A00C3B6F2A8E6B450003EAA5 /* IRemoteDataService.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		A00C3B362A8E564A0003EAA5 = {
 			isa = PBXGroup;
 			children = (
@@ -219,7 +235,7 @@
 		A00C3B6D2A8E6B2B0003EAA5 /* RemoteDataService */ = {
 			isa = PBXGroup;
 			children = (
-				A00C3B6F2A8E6B450003EAA5 /* IRemoteDataService.swift */,
+				A00569172A9275CB00D5011A /* Protocols */,
 				A00C3B6B2A8E6B140003EAA5 /* RemoteDataService.swift */,
 			);
 			path = RemoteDataService;
@@ -286,7 +302,7 @@
 			isa = PBXGroup;
 			children = (
 				A00C3B7A2A8E712F0003EAA5 /* NetworkError */,
-				A00C3B8B2A8E8DEE0003EAA5 /* INetworkService.swift */,
+				A00569162A9275BA00D5011A /* Protocols */,
 				A00C3B892A8E8D690003EAA5 /* NetworkService.swift */,
 			);
 			path = NetworkService;
