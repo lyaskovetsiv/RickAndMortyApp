@@ -64,21 +64,24 @@ extension MainVC {
 			mainCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
 		])
 	}
-
-	private func loadImageFor(cell: CharacterCell, character: Character) {
-		presenter?.getImage(url: character.image ?? "") { data in
-			if let data = data {
-				DispatchQueue.main.async {
-					cell.updateImage(model: data)
-				}
-			}
-		}
-	}
 }
 
 // MARK: - IMainView
 
 extension MainVC: IMainView {
+	/// Метод вью, обновляющий картинку в конкретной ячейке
+	/// - Parameters:
+	///   - model: Модель картинки
+	///   - indexPath: Индекс ячейки
+	public func updateImage(model: ImageModel?, for indexPath: IndexPath) {
+		if let model = model {
+			guard let cell = mainCollectionView.cellForItem(at: indexPath) as? CharacterCell else {
+				return
+			}
+			cell.updateImage(model: model)
+		}
+	}
+
 	/// Метод вью, обновляющий коллекцию
 	public func updateUI() {
 		mainCollectionView.reloadData()
@@ -120,11 +123,9 @@ extension MainVC: UICollectionViewDelegate {
 	}
 
 	func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-		guard let cell = cell as? CharacterCell else {
-			fatalError("Failed to load CharacterCell")
-		}
+		guard cell is CharacterCell else { fatalError("Failed to load CharacterCell")}
 		let character = presenter.getCharacter(by: indexPath)
-		loadImageFor(cell: cell, character: character)
+		presenter.getImage(url: character.image ?? "", by: indexPath)
 	}
 }
 

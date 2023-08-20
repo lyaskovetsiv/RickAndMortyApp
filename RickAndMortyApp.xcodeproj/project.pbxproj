@@ -44,6 +44,7 @@
 		A057985E2A8EA053008E819D /* DetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A057985D2A8EA053008E819D /* DetailsView.swift */; };
 		A05798612A8EA463008E819D /* Color+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05798602A8EA463008E819D /* Color+extension.swift */; };
 		A05798642A8ECBFE008E819D /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05798632A8ECBFE008E819D /* InfoView.swift */; };
+		A07288172A9233B700C7E5FD /* AnyError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07288162A9233B700C7E5FD /* AnyError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -86,6 +87,7 @@
 		A057985D2A8EA053008E819D /* DetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsView.swift; sourceTree = "<group>"; };
 		A05798602A8EA463008E819D /* Color+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+extension.swift"; sourceTree = "<group>"; };
 		A05798632A8ECBFE008E819D /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
+		A07288162A9233B700C7E5FD /* AnyError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A00569162A9275BA00D5011A /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				A00C3B8B2A8E8DEE0003EAA5 /* INetworkService.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		A00569172A9275CB00D5011A /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				A00C3B6F2A8E6B450003EAA5 /* IRemoteDataService.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		A00C3B362A8E564A0003EAA5 = {
 			isa = PBXGroup;
 			children = (
@@ -217,7 +235,7 @@
 		A00C3B6D2A8E6B2B0003EAA5 /* RemoteDataService */ = {
 			isa = PBXGroup;
 			children = (
-				A00C3B6F2A8E6B450003EAA5 /* IRemoteDataService.swift */,
+				A00569172A9275CB00D5011A /* Protocols */,
 				A00C3B6B2A8E6B140003EAA5 /* RemoteDataService.swift */,
 			);
 			path = RemoteDataService;
@@ -264,6 +282,7 @@
 				A00C3B882A8E88A10003EAA5 /* Fonts */,
 				A05798622A8ECB58008E819D /* Extensions */,
 				A00C3B822A8E846A0003EAA5 /* Protocols */,
+				A07288162A9233B700C7E5FD /* AnyError.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -283,7 +302,7 @@
 			isa = PBXGroup;
 			children = (
 				A00C3B7A2A8E712F0003EAA5 /* NetworkError */,
-				A00C3B8B2A8E8DEE0003EAA5 /* INetworkService.swift */,
+				A00569162A9275BA00D5011A /* Protocols */,
 				A00C3B892A8E8D690003EAA5 /* NetworkService.swift */,
 			);
 			path = NetworkService;
@@ -461,6 +480,7 @@
 				A0296D392A8F8DBE008360A5 /* Coordinator.swift in Sources */,
 				A00C3B762A8E6D200003EAA5 /* Character.swift in Sources */,
 				A05798612A8EA463008E819D /* Color+extension.swift in Sources */,
+				A07288172A9233B700C7E5FD /* AnyError.swift in Sources */,
 				A00C3B6C2A8E6B140003EAA5 /* RemoteDataService.swift in Sources */,
 				A00C3B722A8E6BA90003EAA5 /* ServiceAssembly.swift in Sources */,
 				A00C3B452A8E564A0003EAA5 /* SceneDelegate.swift in Sources */,
