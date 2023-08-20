@@ -5,6 +5,7 @@
 //  Created by Иван Лясковец on 17.08.2023.
 //
 
+import Combine
 import Foundation
 import UIKit
 
@@ -25,41 +26,39 @@ final class RemoteDataService: IRemoteDataService {
 	// MARK: - Public methods
 
 	/// Метод сервиса, который отвечает за загрузку персонажей
-	/// - Parameter completion: Обработчик завершения
-	public func loadCharacters(completion: @escaping (Result<ServerResponse, Error>) -> Void) {
-		networkService.sendRequest(path: path, needDecoding: true) { (result: Result<ServerResponse, Error>) in
-			switch result {
-			case .success(let response):
-				completion(.success(response))
-			case .failure(let error):
-				completion(.failure(error))
-			}
-		}
+	/// - Returns: Паблишер типа AnyPublisher<ServerResponse, Error>
+	public func loadCharacters() -> AnyPublisher<ServerResponse, Error> {
+		networkService.sendRequest(path: path, needDecoding: true)
 	}
 
 	/// Метод сервиса, который отвечает за загрузку картинок
-	/// - Parameter completion: Обработчик завершения
-	public func loadImage(from stringUrl: String, completion: @escaping (Result<ImageModel, Error>) -> Void) {
+	/// - Parameter stringUrl: Ccskrf yf rfhnbyre
+	/// - Returns: Паблишер типа AnyPublisher<ImageModel, Error>
+	public func loadImage(from stringUrl: String) -> AnyPublisher<ImageModel, Error> {
 		if let cachedImage = imageCache.object(forKey: NSString(string: stringUrl)) {
 			let model = ImageModel(image: cachedImage)
-			completion(.success(model))
+			return Result.Publisher(.success(model)).eraseToAnyPublisher()
 		} else {
-			DispatchQueue.global().asyncAfter(deadline: .now() + 1.0) { [weak self]  in
-				self?.networkService.sendRequest(path: stringUrl, needDecoding: false) { (result: Result<Data, Error>) in
-					switch result {
-					case .success(let data):
-						guard let image = UIImage(data: data) else {
-							completion(.failure(NetworkError.badData))
-							return
+			return Future { [weak self] promise in
+				DispatchQueue.global().asyncAfter(deadline: .now() + 1.0) {
+					self?.networkService.sendRequest(path: stringUrl, needDecoding: false)
+					{ (result: Result<Data, Error>) in
+						switch result {
+						case .success(let data):
+							guard let image = UIImage(data: data) else {
+								promise(.failure(NetworkError.badData))
+								return
+							}
+							self?.imageCache.setObject(image, forKey: NSString(string: stringUrl))
+							let model = ImageModel(image: image)
+							promise(.success(model))
+						case .failure(let error):
+							promise(.failure(error))
 						}
-						self?.imageCache.setObject(image, forKey: NSString(string: stringUrl))
-						let model = ImageModel(image: image)
-						completion(.success(model))
-					case .failure(let error):
-						completion(.failure(error))
 					}
 				}
 			}
+			.eraseToAnyPublisher()
 		}
 	}
 

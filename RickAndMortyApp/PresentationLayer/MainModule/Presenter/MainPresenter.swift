@@ -5,6 +5,7 @@
 //  Created by Иван Лясковец on 17.08.2023.
 //
 
+import Combine
 import Foundation
 
 /// Класс презентера Main модуля
@@ -17,6 +18,7 @@ final class MainPresenter: IMainPresenter {
 	private var moduleOutput: ModuleOutput
 	private var remoteDataService: IRemoteDataService
 	private var characters: [Character] = []
+	private var cancellables = Set<AnyCancellable>()
 
 	// MARK: - Init
 
@@ -32,21 +34,19 @@ final class MainPresenter: IMainPresenter {
 
 	/// Метод презентера, обрабатывающий этап жц контроллера, когда вью загрузилась
 	public func viewDidLoad() {
-		remoteDataService.loadCharacters { [weak self] result in
-			guard let self = self else { return }
-			switch result {
-			case .success(let response):
-				self.characters = response.results
-				DispatchQueue.main.async {
-					self.view?.updateUI()
+		remoteDataService.loadCharacters()
+			.subscribe(on: DispatchQueue.global(qos: .userInitiated))
+			.receive(on: DispatchQueue.main)
+			.sink { [weak self] completion in
+				if case let .failure(error) = completion {
+					print(error.localizedDescription)
+					self?.view?.showAlert()
 				}
-			case .failure(let error):
-				print(error.localizedDescription)
-				DispatchQueue.main.async {
-					self.view?.showAlert()
-				}
+			} receiveValue: { [weak self] result in
+				self?.characters = result.results
+				self?.view?.updateUI()
 			}
-		}
+			.store(in: &cancellables)
 	}
 
 	/// Метод презентера, вовращающий количество персонадей
@@ -61,21 +61,22 @@ final class MainPresenter: IMainPresenter {
 	public func getCharacter(by indexPath: IndexPath) -> Character {
 		return characters[indexPath.item]
 	}
-
 	/// Метод презентера, выполняющий загрузку картинки для персонажа
 	/// - Parameters:
 	///   - url: Адрес картинки
-	///   - completion: Обработчик завершения
-	public func getImage(url: String, completion: @escaping (ImageModel?) -> Void) {
-		remoteDataService.loadImage(from: url) { result in
-			switch result {
-			case .success(let model):
-				completion(model)
-			case .failure(let error):
-				completion(nil)
-				print(error)
+	///   - indexPath: Индекс ячекйи
+	public func getImage(url: String, by indexPath: IndexPath) {
+		remoteDataService.loadImage(from: url)
+			.subscribe(on: DispatchQueue.global(qos: .userInitiated))
+			.receive(on: DispatchQueue.main)
+			.sink { [weak self] completion in
+				if case let .failure(error) = completion {
+					print(error.localizedDescription)
+				}
+			} receiveValue: { [weak self] result in
+				self?.view?.updateImage(model: result, for: indexPath)
 			}
-		}
+			.store(in: &cancellables)
 	}
 
 	/// Метод презентера, обрабатывающий нажатие на иконку с персонажем
