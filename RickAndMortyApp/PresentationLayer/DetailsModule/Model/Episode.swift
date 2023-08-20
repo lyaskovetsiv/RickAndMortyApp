@@ -12,11 +12,14 @@ struct Episode: Codable {
 	let name: String
 	let air_date: String
 	let episode: String
-	var season: String {
-		getSubstring(from: episode, index1: 1, index2: 2)
+	var season: Int {
+		let result = getSubstring(from: episode, index1: 1, index2: 2)
+		return Int(result) ?? 0
+
 	}
-	var ep: String {
-		getSubstring(from: episode, index1: 4, index2: 5)
+	var ep: Int {
+		let result = getSubstring(from: episode, index1: 4, index2: 5)
+		return Int(result) ?? 0
 	}
 
 	private func getSubstring(from string: String, index1: Int, index2: Int) -> String {

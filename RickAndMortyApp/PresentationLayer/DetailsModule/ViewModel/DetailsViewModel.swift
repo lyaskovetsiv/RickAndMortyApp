@@ -12,9 +12,9 @@ import Foundation
 final class DetailsViewModel: ObservableObject {
 	// MARK: - States&Properties
 
-	@Published var character: Character
-	@Published var place: Place = Place(name: "", type: "")
-	@Published var episodes: [Episode] = []
+	@Published private(set) var character: Character
+	@Published private(set) var place: Place = Place(name: "", type: "")
+	@Published private(set) var episodes: [Episode] = []
 	@Published var errorMessage = ""
 	@Published var showingError: Bool = false
 	private var remoteDataService: IRemoteDataService
@@ -67,6 +67,12 @@ final class DetailsViewModel: ObservableObject {
 					}
 				} receiveValue: { [weak self] episode in
 					self?.episodes.append(episode)
+					self?.episodes.sort { episode1, episode2 in
+						if episode1.season == episode2.season {
+							return episode1.ep < episode2.ep
+						}
+						return episode1.season < episode2.season
+					}
 				}
 				.store(in: &cancellables)
 		}
