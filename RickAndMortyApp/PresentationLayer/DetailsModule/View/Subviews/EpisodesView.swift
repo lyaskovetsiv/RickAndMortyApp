@@ -30,7 +30,7 @@ struct EpisodesView: View {
 						VStack {
 							HStack {
 								Text(episode.name)
-									.font(Font.custom("Gilroy-ExtraBold", fixedSize: 17))
+									.font(Font.custom("Gilroy-ExtraBold", size: 17))
 								Spacer()
 							}
 							.padding(16)

@@ -44,7 +44,7 @@ final class DetailsViewModel: ObservableObject {
 			.sink(receiveCompletion: { [weak self] completion in
 				if case let .failure(error) = completion {
 					print(error.localizedDescription)
-					self?.errorMessage = "Missed data from server: place"
+					self?.errorMessage = "Missed data from server: origin"
 					self?.showingError = true
 				}
 			}, receiveValue: { [weak self] place in
