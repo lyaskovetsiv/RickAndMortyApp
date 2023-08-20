@@ -11,4 +11,5 @@ import Foundation
 protocol IMainView: AnyObject {
 	func updateUI()
 	func showAlert()
+	func updateImage(model: ImageModel?, for indexPath: IndexPath)
 }

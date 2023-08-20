@@ -41,5 +41,14 @@ struct DetailsView: View {
 				viewModel.loadEpisodes()
 			}
 		}
+		.alert("Oops", isPresented: $viewModel.showingError) {
+			Button {
+				viewModel.showingError = false
+			} label: {
+				Text("OK!")
+			}
+		} message: {
+			Text(viewModel.errorMessage)
+		}
 	}
 }

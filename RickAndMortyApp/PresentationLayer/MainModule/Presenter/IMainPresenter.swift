@@ -12,6 +12,6 @@ protocol IMainPresenter: AnyObject {
 	func viewDidLoad()
 	func getNumberOfCharacters() -> Int
 	func getCharacter(by indexPath: IndexPath) -> Character
-	func getImage(url: String, completion: @escaping (ImageModel?) -> Void)
+	func getImage(url: String, by indexPath: IndexPath)
 	func characterTapped(indexPath: IndexPath)
 }
