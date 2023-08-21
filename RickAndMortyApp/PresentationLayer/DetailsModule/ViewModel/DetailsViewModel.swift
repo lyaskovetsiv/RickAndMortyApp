@@ -77,4 +77,16 @@ final class DetailsViewModel: ObservableObject {
 				.store(in: &cancellables)
 		}
 	}
+
+	/// Метод вьюмодели для проверки origin на существование
+	/// - Returns: Флаг
+	public func isPlaceEmpty() -> Bool {
+		return place.name.trimmingCharacters(in: .whitespacesAndNewlines) == ""
+	}
+
+	/// Метод вьюмодели для проверки episodes на существование
+	/// - Returns: Флаг
+	public func isEpisodesEmpty() -> Bool {
+		return episodes.count == 0
+	}
 }
