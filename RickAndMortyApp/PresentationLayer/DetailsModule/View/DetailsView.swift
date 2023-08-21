@@ -10,6 +10,8 @@ import SwiftUI
 struct DetailsView: View {
 	// MARK: - States&Properties
 	@ObservedObject var viewModel: DetailsViewModel
+	@State private var showingOrigin: Bool = true
+	@State private var showingEpisodes: Bool = true
 
 	// MARK: - Init
 
@@ -26,8 +28,12 @@ struct DetailsView: View {
 				VStack {
 					HeaderView(viewModel: viewModel)
 					InfoView(viewModel: viewModel)
-					OriginView(viewModel: viewModel)
-					EpisodesView(viewModel: viewModel)
+					if showingOrigin {
+						OriginView(viewModel: viewModel)
+					}
+					if showingEpisodes {
+						EpisodesView(viewModel: viewModel)
+					}
 				}
 				.padding(.top, 100)
 			}
@@ -44,6 +50,12 @@ struct DetailsView: View {
 		.alert("Oops", isPresented: $viewModel.showingError) {
 			Button {
 				viewModel.showingError = false
+				if viewModel.isPlaceEmpty() {
+					showingOrigin = false
+				}
+				if viewModel.isEpisodesEmpty() {
+					showingEpisodes = false
+				}
 			} label: {
 				Text("OK!")
 			}
